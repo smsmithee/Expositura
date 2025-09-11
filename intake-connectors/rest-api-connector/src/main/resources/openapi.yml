@@ -1,0 +1,245 @@
+openapi: 3.0.4
+info:
+  title: Expositura API Documentation
+  description: |-
+    Expositura is intended to be a replacement for the legacy Prism data analytics platform originally built by Stella Technology. Expositura has been written independently from the ground up and only shares the API signature of Prism 2.x while everything else has been built from scratch using modern Java, Spring, Elastic, and AWS services
+  termsOfService: https://expositura.io/terms/
+  contact:
+    email: dev@expositura.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.1.0
+externalDocs:
+  description: More documentation about Expositura
+  url: https://expositura.io
+servers:
+  - url: https://sandbox.expositura.io/api
+tags:
+  - name: intake
+    description: Standard and Legacy API's for intake of clinical data
+    externalDocs:
+      description: Intake documentation
+      url: https://expositura.io/docs/intake
+paths:
+  /ods/clinical-message:
+    post:
+      tags:
+        - intake
+      summary: Import clinical data using legacy Prism api
+      description: Allows multiple messages to be sent in with same meta-data. Typically used to send in RAW and PROCESSED version of the same message.
+      operationId: legacyIntake
+      requestBody:
+        description: The clinical message(s) and associated meta-data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegacyIntakeRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegacyIntakeResponse'
+        '400':
+          description: Failed to validate
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        '401':
+          description: Caller is not authenticated
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        default:
+          description: Unexpected API Error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ApiError"
+  /ods/clinical-message/parse:
+    post:
+      tags:
+        - intake
+      summary: Import clinical data using legacy Prism api and immediately return parsed results
+      description: Parses and returns the clinical data (and does regular intake process)
+      operationId: legacyIntakeWithParsedResponse
+      requestBody:
+        description: The clinical message(s) and associated meta-data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegacyIntakeRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegacyIntakeParsedResponse'
+        '400':
+          description: Failed to validate
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        '401':
+          description: Caller is not authenticated
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        default:
+          description: Unexpected API Error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ApiError"
+components:
+  schemas:
+    ApiError:
+      properties:
+        errors:
+          items:
+            properties:
+              endUserMessage:
+                type: string
+              errorCode:
+                type: string
+              errorProperties:
+                properties: {}
+                type: object
+            type: object
+          type: array
+        txID:
+          type: string
+    LegacyIntakeRequest:
+      type: object
+      properties:
+        adpServiceVersion:
+          description: Deprecated
+          example: "Deprecated"
+          type: string
+        clinicalMessageType:
+          enum:
+            - CCD
+            - FHIR
+            - HL7V2
+          description: The type of clinical message
+          type: string
+        eventType:
+          description: Primarily used for HL7v2. Event types (ORU, ADT, etc)
+          example: ORU_R01
+          type: string
+        messageDate:
+          description: The date and time of the message
+          type: string
+        otherAttributes:
+          additionalProperties:
+            type: object
+            properties: {}
+          description:
+            Any other data that should be attached to the clinical data
+          type: string
+        patientId:
+          description: Local patient id (for data source)
+          example: 12345
+          type: string
+        patientIdAa:
+          description: Local patient id assigning authority (for data source)
+          example: 1.2.5.8338.15.1
+          type: string
+        patientMpiId:
+          description: The master patient identifier (HIE ID usually)
+          example: 100000043
+          type: string
+        patientMpiIdsOld:
+          description: Comma delimited list of prior MPI's for the patient (due to merge, etc)
+          example: 10001,100067
+          type: string
+        prismServiceVersion:
+          type: string
+          description: Deprecated
+          example: "Deprecated"
+        receivingApplication:
+          description: The expected receiving application
+          example: Expositura
+          type: string
+        resultType:
+          description: Primarily used for HL7v2 but allows sub-event types
+          example: Lab
+          type: string
+        sendingApplication:
+          description: Application sending the data
+          example: Nextgen 5.0.1
+          type: string
+        sourceFacility:
+          description: The name of the source facility
+          example: Good Shepard Medical Center
+          type: string
+        sourceFacilityId:
+          description: The ID of the source facility (can be an OID)
+          example: "1.2.5.3883.7"
+          type: string
+        sourceLastUpdatedTime:
+          description: The time the source last updated this clinical data
+          example: 2025-05-01T12:31:05-05:00
+          type: string
+        sourceMessageId:
+          description: The ID of the message from the source
+          example: MSG-1001
+          type: string
+        timeZoneId:
+          description: The timezone ID where the message was generated
+          example: America/New York
+          type: string
+        contents:
+          type: array
+          description: Clinical data contents along with processed level
+          items:
+            properties:
+              content:
+                description: Clinical data encoded in base64
+                example: VGhpcyBpcyBhIHJhbmRvbSBidW5jaCBvZiB0ZXh0
+                type: string
+              otherAttributes:
+                additionalProperties:
+                  properties: {}
+                  type: object
+                description: Extra data to be stored with the clinical data
+                type: object
+              processedLevel:
+                description: Used to differentiate raw versus processed data
+                enum:
+                  - RAW
+                  - PROCESSED
+                type: string
+            type: object
+    LegacyIntakeParsedResponse:
+      type: object
+      properties:
+        importStatus:
+          $ref: "#/components/schemas/LegacyIntakeResponseInner"
+        parsedResponse:
+          type: object
+    LegacyIntakeResponse:
+      items:
+        $ref: "#/components/schemas/LegacyIntakeResponseInner"
+    LegacyIntakeResponseInner:
+      properties:
+        contentIndex:
+          type: integer
+        id:
+          type: string
+        message:
+          type: string
+        status:
+          type: string
+        version:
+          type: string
+      type: object
