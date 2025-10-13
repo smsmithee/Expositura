@@ -10,7 +10,7 @@
   </parent>
   <artifactId>intake-connectors</artifactId>
   <packaging>pom</packaging>
-  <name>Expositura Intake Connectors</name>
+  <name>Expositura - Intake</name>
   <modules>
     <module>rest-api-connector</module>
   </modules>

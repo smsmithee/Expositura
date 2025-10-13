@@ -11,46 +11,82 @@
   <artifactId>rest-api-connector</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
+  <name>Expositura - Intake - Rest API</name>
 
-<dependencies>
-  <!-- Jackson -->
-  <dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-annotations</artifactId>
-  </dependency>
+  <dependencies>
   
-  <!-- Jakarta -->
-  <dependency>
-    <groupId>jakarta.annotation</groupId>
-    <artifactId>jakarta.annotation-api</artifactId>
-  </dependency>
-  <dependency>
-    <groupId>jakarta.servlet</groupId>
-    <artifactId>jakarta.servlet-api</artifactId>
-    <scope>provided</scope>
-  </dependency>
-  <dependency>
-    <groupId>jakarta.validation</groupId>
-    <artifactId>jakarta.validation-api</artifactId>
-  </dependency>
+    <!-- AWS Dependencies -->
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>regions</artifactId>
+      <version>${aws.java.sdk.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>s3</artifactId>
+      <version>${aws.java.sdk.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  
+    <!-- Jackson -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+    </dependency>
+  
+    <!-- Jakarta -->
+    <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
 
-  <!-- Spring -->
-  <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-context</artifactId>
-  </dependency>
-  <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-web</artifactId>
-  </dependency>
+    <!-- Spring -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
 
-  <!-- Swagger -->
-  <dependency>
-    <groupId>io.swagger.core.v3</groupId>
-    <artifactId>swagger-annotations</artifactId>
-    <version>2.2.36</version>
-  </dependency>
-</dependencies>
+    <!-- Spring Boot -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-log4j2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- Swagger -->
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-annotations</artifactId>
+      <version>2.2.36</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
@@ -75,8 +111,8 @@
                 <useJakartaEe>true</useJakartaEe>
                 <useTags>true</useTags> 
               </configOptions>
-              <apiPackage>com.expositura.api</apiPackage>
-              <modelPackage>com.expositura.api.model</modelPackage>
+              <apiPackage>com.expositura.intake.rest.api</apiPackage>
+              <modelPackage>com.expositura.intake.rest.api.model</modelPackage>
               <generateApiTests>false</generateApiTests>
               <supportingFilesToGenerate>
                 ApiUtil.java
@@ -88,4 +124,4 @@
       </plugin>
     </plugins>
   </build>
-  </project>
+</project>
