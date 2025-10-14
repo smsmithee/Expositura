@@ -39,10 +39,7 @@ public class DigitsRule implements Rule<JFieldVar, JFieldVar> {
             && node.has("integerDigits") && node.has("fractionalDigits")
             && isApplicableType(field)) {
 
-      final Class<? extends Annotation> digitsClass
-              = ruleFactory.getGenerationConfig().isUseJakartaValidation()
-              ? Digits.class
-              : javax.validation.constraints.Digits.class;
+      final Class<? extends Annotation> digitsClass = Digits.class;
       JAnnotationUse annotation = field.annotate(digitsClass);
 
       annotation.param("integer", node.get("integerDigits").asInt());

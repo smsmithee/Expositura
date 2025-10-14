@@ -61,6 +61,7 @@ public class PropertyRule implements Rule<JDefinedClass, JDefinedClass> {
    * @param node the node describing the characteristics of this property
    * @param parent the parent node
    * @param jclass the Java class which should have this property added
+   * @param schema The schema
    * @return the given jclass
    */
   @Override
@@ -201,11 +202,7 @@ public class PropertyRule implements Rule<JDefinedClass, JDefinedClass> {
     } else if ("time".equalsIgnoreCase(format)) {
       ruleFactory.getAnnotator().timeField(field, clazz, node);
     } else if ("email".equalsIgnoreCase(format) && ruleFactory.getGenerationConfig().isIncludeJsr303Annotations()) {
-      if (ruleFactory.getGenerationConfig().isUseJakartaValidation()) {
-        field.annotate(jakarta.validation.constraints.Email.class);
-      } else {
-        field.annotate(javax.validation.constraints.Email.class);
-      }
+      field.annotate(jakarta.validation.constraints.Email.class);
     }
   }
 

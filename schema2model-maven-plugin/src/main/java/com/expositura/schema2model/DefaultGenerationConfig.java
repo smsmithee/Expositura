@@ -495,11 +495,4 @@ public class DefaultGenerationConfig implements GenerationConfig {
     return true;
   }
 
-  /**
-   * @return {@code false}
-   */
-  @Override
-  public boolean isUseJakartaValidation() {
-    return false;
-  }
 }

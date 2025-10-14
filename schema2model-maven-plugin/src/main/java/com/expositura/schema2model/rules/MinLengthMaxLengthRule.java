@@ -42,10 +42,7 @@ public class MinLengthMaxLengthRule implements Rule<JFieldVar, JFieldVar> {
             && (node.has("minLength") || node.has("maxLength"))
             && isApplicableType(field)) {
 
-      final Class<? extends Annotation> sizeClass
-              = ruleFactory.getGenerationConfig().isUseJakartaValidation()
-              ? Size.class
-              : javax.validation.constraints.Size.class;
+      final Class<? extends Annotation> sizeClass = Size.class;
       JAnnotationUse annotation = field.annotate(sizeClass);
 
       if (node.has("minLength")) {

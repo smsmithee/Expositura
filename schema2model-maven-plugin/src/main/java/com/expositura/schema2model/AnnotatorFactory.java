@@ -38,21 +38,22 @@ public class AnnotatorFactory {
   public Annotator getAnnotator(AnnotationStyle style) {
 
     switch (style) {
-      case JACKSON:
-      case JACKSON2:
+      case JACKSON, JACKSON2 -> {
         return new Jackson2Annotator(generationConfig);
-      case JSONB1:
-        return new Jsonb1Annotator(generationConfig);
-      case JSONB2:
+      }
+      case JSONB2 -> {
         return new Jsonb2Annotator(generationConfig);
-      case GSON:
+      }
+      case GSON -> {
         return new GsonAnnotator(generationConfig);
-      case MOSHI1:
+      }
+      case MOSHI1 -> {
         return new Moshi1Annotator(generationConfig);
-      case NONE:
+      }
+      case NONE -> {
         return new NoopAnnotator();
-      default:
-        throw new IllegalArgumentException("Unrecognised annotation style: " + style);
+      }
+      default -> throw new IllegalArgumentException("Unrecognised annotation style: " + style);
     }
 
   }

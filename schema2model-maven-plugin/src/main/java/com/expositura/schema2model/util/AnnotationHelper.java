@@ -18,33 +18,16 @@ package com.expositura.schema2model.util;
 import com.expositura.schema2model.GenerationConfig;
 import com.sun.codemodel.JAnnotationUse;
 import com.sun.codemodel.JClass;
-import com.sun.codemodel.JDefinedClass;
+import com.sun.codemodel.JDefinedClass;import jakarta.annotation.Generated;
 
 public class AnnotationHelper {
 
-  private static final String JAVA_8_GENERATED = "javax.annotation.Generated";
-  private static final String JAVA_9_GENERATED = "javax.annotation.processing.Generated";
-  private static final String GENERATOR_NAME = "schema2model";
-
-  private static boolean tryToAnnotate(JDefinedClass jclass, String annotationClassName) {
-    try {
-      Class.forName(annotationClassName);
-      JClass annotationClass = jclass.owner().ref(annotationClassName);
-      JAnnotationUse generated = jclass.annotate(annotationClass);
-      generated.param("value", GENERATOR_NAME);
-      return true;
-    } catch (ClassNotFoundException e) {
-      return false;
-    }
-
-  }
+  private static final String GENERATOR_NAME = "expositura.schema2model";
 
   public static void addGeneratedAnnotation(GenerationConfig config, JDefinedClass jclass) {
-    if (JavaVersion.is9OrLater(config.getTargetVersion())) {
-      tryToAnnotate(jclass, JAVA_9_GENERATED);
-    } else {
-      tryToAnnotate(jclass, JAVA_8_GENERATED);
-    }
+    final JClass annotationClass = jclass.owner().ref(Generated.class);
+    final JAnnotationUse generated = jclass.annotate(annotationClass);
+    generated.param("value", GENERATOR_NAME);
   }
 
 }

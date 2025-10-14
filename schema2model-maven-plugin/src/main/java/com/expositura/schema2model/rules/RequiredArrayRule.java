@@ -102,10 +102,7 @@ public class RequiredArrayRule implements Rule<JDefinedClass, JDefinedClass> {
   }
 
   private void addNotNullAnnotation(JFieldVar field) {
-    final Class<? extends Annotation> notNullClass
-            = ruleFactory.getGenerationConfig().isUseJakartaValidation()
-            ? NotNull.class
-            : javax.validation.constraints.NotNull.class;
+    final Class<? extends Annotation> notNullClass = NotNull.class;
     field.annotate(notNullClass);
   }
 

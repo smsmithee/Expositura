@@ -591,15 +591,5 @@ public interface GenerationConfig {
    */
   boolean isIncludeGeneratedAnnotation();
 
-  /**
-   * Gets the 'useJakartaValidation' configuration option. This property works in collaboration with the
-   * {@link #isIncludeJsr303Annotations()} configuration option. If the {@link #isIncludeJsr303Annotations()} returns
-   * {@code false}, then this configuration option will not affect anything.
-   *
-   * @return Whether to use <a href="http://jcp.org/en/jsr/detail?id=303">JSR-303</a> annotations from
-   * {@code jakarta.validation} package instead of {@code javax.validation} package when adding JSR-303 annotations to
-   * generated Java types
-   */
-  boolean isUseJakartaValidation();
 
 }

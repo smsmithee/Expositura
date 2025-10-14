@@ -35,7 +35,6 @@ public enum AnnotationStyle {
    *      href="https://github.com/FasterXML/jackson-annotations">https://github.com/FasterXML/jackson-annotations</a>
    */
   JACKSON2,
-  JSONB1,
   JSONB2,
   /**
    * Gson 2.x

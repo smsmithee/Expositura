@@ -1208,8 +1208,4 @@ public class Schema2ModelMojo extends AbstractMojo implements GenerationConfig {
     return includeGeneratedAnnotation;
   }
 
-  @Override
-  public boolean isUseJakartaValidation() {
-    return useJakartaValidation;
-  }
 }

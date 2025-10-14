@@ -35,10 +35,7 @@ public class ValidRule implements Rule<JFieldVar, JFieldVar> {
   public JFieldVar apply(String nodeName, JsonNode node, JsonNode parent, JFieldVar field, Schema currentSchema) {
 
     if (ruleFactory.getGenerationConfig().isIncludeJsr303Annotations()) {
-      final Class<? extends Annotation> validClass
-              = ruleFactory.getGenerationConfig().isUseJakartaValidation()
-              ? Valid.class
-              : javax.validation.Valid.class;
+      final Class<? extends Annotation> validClass = Valid.class;
       field.annotate(validClass);
     }
 
