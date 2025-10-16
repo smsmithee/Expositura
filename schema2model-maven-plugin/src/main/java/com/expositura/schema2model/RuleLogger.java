@@ -15,14 +15,34 @@
  */
 package com.expositura.schema2model;
 
+/**
+ * Interface that defines fundamental methods used by all RuleLogger implementations.
+ */
 public interface RuleLogger {
 
+  /**
+   * Log a debug message.
+   * @param msg The message.
+   */
   void debug(String msg);
 
+  /**
+   * Log an error message.
+   * @param msg The message.
+   */
   void error(String msg);
 
+  /**
+   * Log an error message and the exception related to the message.
+   * @param s The message.
+   * @param e The exception related to the message.
+   */
   void error(String s, Throwable e);
 
+  /**
+   * Log an info message.
+   * @param msg The message.
+   */
   void info(String msg);
 
   boolean isDebugEnabled();

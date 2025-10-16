@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/Coding",
+  "title": "Coding Datatype Schema",
+  "description": "A Coding is a representation of a defined concept using a symbol from a defined \"code system\"",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Symbol in syntax defined by the system"
+    },
+    "display": {
+      "type": "string",
+      "description": "Representation defined by the system"
+    },
+    "system": {
+      "type": "string",
+      "description": "Identity of the terminology system"
+    },
+    "userSelected": {
+      "type": "boolean",
+      "description": "If this coding was chosen directly by the user"
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of the system - if relevant"
+    }
+  }
+}

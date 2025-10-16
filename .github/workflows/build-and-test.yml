@@ -1,0 +1,74 @@
+---
+name: Build, Test, and Optionally Deploy
+on:
+  push:
+    # NOTE: Runs on all branches but only deploys for main and release branches
+    branches:
+      - "**"
+    # Does NOT trigger when a tag is pushed
+    tags-ignore:
+      - "**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  AWS_REGION: us-west-2
+  CI: GHA
+  ECR: 851725410727.dkr.ecr.us-west-2.amazonaws.com
+  GHA_USER: ${{ github.actor }}
+  GHA_USER_EMAIL: ${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com
+
+jobs:
+  pre-build-setup:
+    name: Pre-Build Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Get Version
+        id: get-tag
+        run: |
+          SHA_SHORT=$(git rev-parse --short "$GITHUB_SHA")
+          if [ "${{ github.event_name }}" = ""workflow_dispatch" ]; then
+            echo "thebuildtag=$(cat .version)" >> $GITHUB_ENV
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "thebuildtag=dev-$(cat .version)-b-${SHA_SHORT}" >> $GITHUB_ENV
+          elif [[ "${{ github.ref_name }}" == release/* ]]; then
+            echo "thebuildtag=$(cat .version)-RC-b-${SHA_SHORT}" >> $GITHUB_ENV
+          else
+            echo "thebuildtag=NA" >> $GITHUB_ENV
+          fi
+
+    outputs:
+      buildtag: ${{ env.thebuildtag }}
+
+  build:
+    name: Expositura Build
+    needs: [pre-build-setup]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup Maven Action
+        uses: s4u/setup-maven-action@v1.19.0
+        with:
+          maven-version: 3.9.11
+          java-distribution: 'temurin'
+          java-version: '25'
+
+      # So that the jar versions are consistent with the docker tags, we set the version in the pom.xml
+      # This should only run if the buildtag is not 'NA'
+      - name: Update pom.xml version
+        env:
+          BUILDTAG: ${{ needs.pre-build-setup.outputs.buildtag }}
+        if: ${{ needs.pre-build-setup.outputs.buildtag != 'NA' }}
+        run: mvn --batch-mode --no-transfer-progress versions:set -DnewVersion=$BUILDTAG
+        
+      - name: Build and test
+        run: mvn --batch-mode --no-transfer-progress clean deploy -Pdeploy-to-central
+        

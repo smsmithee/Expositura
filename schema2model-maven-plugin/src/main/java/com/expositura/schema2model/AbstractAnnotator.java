@@ -32,10 +32,17 @@ public abstract class AbstractAnnotator implements Annotator {
 
   private GenerationConfig generationConfig;
 
+  /**
+   * Empty/Default constructor
+   */
   public AbstractAnnotator() {
   }
 
-  public AbstractAnnotator(GenerationConfig generationConfig) {
+  /**
+   * Create an abstract annotator based on the specified configuration options.
+   * @param generationConfig The configuration for this annotator.
+   */
+  public AbstractAnnotator(final GenerationConfig generationConfig) {
     this.generationConfig = generationConfig;
   }
 
@@ -99,6 +106,10 @@ public abstract class AbstractAnnotator implements Annotator {
     return false;
   }
 
+  /**
+   * Get the configuration for this annotator.
+   * @return The config for this annotator.
+   */
   public GenerationConfig getGenerationConfig() {
     return generationConfig;
   }

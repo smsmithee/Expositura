@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/CodeableConcept",
+  "title": "CodeableConcept Datatype Schema",
+  "description": "A CodeableConcept represents a value that is usually supplied by providing a reference to one or more terminologies or ontologies but may also be defined by the provision of text. This is a common pattern in healthcare data.",
+  "type": "object",
+  "properties": {
+    "coding": {
+      "type": "array",
+      "description": "Code defined by a terminology system",
+      "items": {
+        "$ref": "coding.json"
+      }
+    },
+    "text": {
+      "type": "string",
+      "description": "Plain text representation of the concept"
+    }
+  }
+}

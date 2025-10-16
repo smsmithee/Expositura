@@ -389,11 +389,17 @@ public class ObjectRule implements Rule<JPackage, JType> {
       }
 
       // If this is an Integer, Double, Float, or Boolean then treat differently from other objects
-      switch (fieldVar.type().name()) {
+      switch (fieldVar.type().erasure().name()) {
         case "Integer", "Double", "Boolean", "Float" ->
-          body._if(JExpr._null().ne(fieldVar))._then()._return(JExpr.FALSE);
+          body._if(JExpr._null().ne(param.ref(fieldVar)))._then()._return(JExpr.FALSE);
+        case "List" ->
+          body._if(jclass.owner().ref("org.apache.commons.collections4.CollectionUtils").staticInvoke("isEmpty").arg(param.ref(fieldVar)).not())._then()._return(JExpr.FALSE);
+        case "Map" ->
+          body._if(jclass.owner().ref("org.apache.commons.collections4.MapUtils").staticInvoke("isEmpty").arg(param.ref(fieldVar)).not())._then()._return(JExpr.FALSE);
+        case "String" ->
+          body._if(jclass.owner().ref("org.apache.commons.lang3.StringUtils").staticInvoke("isEmpty").arg(param.ref(fieldVar)).not())._then()._return(JExpr.FALSE);
         default ->
-          body._if(JExpr._null().ne(param.ref(fieldVar)).cand(param.ref(fieldVar).invoke("isEmpty").not()))._then()._return(JExpr.FALSE);
+          body._if(jclass.owner().ref(fieldVar.type().fullName()).staticInvoke("isEmpty").arg(param.ref(fieldVar)).not())._then()._return(JExpr.FALSE);
       }
 
     }

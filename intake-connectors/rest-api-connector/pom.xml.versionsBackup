@@ -6,9 +6,10 @@
   <parent>
     <groupId>io.github.smsmithee.expositura</groupId>
     <artifactId>intake-connectors</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.0-SNAPSHOT</version>
   </parent>
   <artifactId>rest-api-connector</artifactId>
+  <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>Expositura - Intake - Rest API</name>
 

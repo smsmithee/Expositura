@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/Period",
+  "title": "Period Datatype Schema",
+  "description": "A time period defined by a start and end date/time. A period specifies a range of times. The context of use will specify whether the entire range applies (e.g. \"the patient was an inpatient of the hospital for this time range\") or one value from the period applies (e.g. \"give to the patient between 2 and 4 pm on 24-Jun 2013\").",
+  "type": "object",
+  "properties": {
+    "end": {
+      "type": "string",
+      "description": "End time with inclusive boundary, if not ongoing"
+    },
+    "start": {
+      "type": "string",
+      "description": "Starting time with inclusive boundary"
+    }
+  }
+}

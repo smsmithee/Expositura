@@ -15,6 +15,7 @@
  */
 package com.expositura.schema2model.rules;
 
+import com.expositura.schema2model.GenerationConfig;
 import com.expositura.schema2model.JsonPointerUtils;
 import com.expositura.schema2model.Schema;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -23,6 +24,7 @@ import com.sun.codemodel.JConditional;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JDocCommentable;
 import com.sun.codemodel.JExpr;
+import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JFieldVar;
 import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
@@ -97,7 +99,7 @@ public class PropertyRule implements Rule<JDefinedClass, JDefinedClass> {
     formatAnnotation(field, jclass, node);
 
     ruleFactory.getAnnotator().propertyField(field, jclass, nodeName, node);
-    
+
     if (isIncludeGetters) {
       JMethod getter = addGetter(jclass, field, nodeName, node, isRequired(nodeName, node, schema), useOptional(nodeName, node, schema));
       ruleFactory.getAnnotator().propertyGetter(getter, jclass, nodeName);
@@ -259,15 +261,27 @@ public class PropertyRule implements Rule<JDefinedClass, JDefinedClass> {
     JBlock body = setter.body();
     // If param type is String then use StringUtils
     if ("String".equals(field.type().name())) {
-      body.assign(JExpr._this().ref(field), 
+      body.assign(JExpr._this().ref(field),
               c.owner().ref("org.apache.commons.lang3.StringUtils").staticInvoke("stripToNull").arg(param));
     } else {
-      body.assign(JExpr._this().ref(field), JOp.cond(param.invoke("isEmpty"), JExpr._null(), param));
+      JExpression isEmptyExp;
+      switch (param.type().erasure().name()) {
+        case "List", "Map" ->
+          isEmptyExp = JOp.cond(
+                  c.owner().ref("org.apache.commons.collections4.CollectionUtils").staticInvoke("isEmpty").arg(param),
+                  JExpr._null(), param);
+        case "Integer", "Double", "Float", "Boolean" ->
+          isEmptyExp = JOp.cond(JExpr._null().eq(param), JExpr._null(), param);
+        default ->
+          isEmptyExp = JOp.cond(
+                  c.owner().ref(param.type().fullName()).staticInvoke("isEmpty").arg(param), JExpr._null(), param);
+      }
+      body.assign(JExpr._this().ref(field), isEmptyExp);
     }
 
     return setter;
   }
-  
+
   private JMethod addBuilderMethod(JDefinedClass c, JFieldVar field, String jsonPropertyName, JsonNode node) {
     JMethod result = null;
     if (ruleFactory.getGenerationConfig().isUseInnerClassBuilders()) {
@@ -298,46 +312,46 @@ public class PropertyRule implements Rule<JDefinedClass, JDefinedClass> {
     JBlock body = builderMethod.body();
     body.add(JExpr.cast(c, JExpr._this().ref("instance")).invoke(getSetterName(jsonPropertyName, node)).arg(param));
     body._return(JExpr._this());
-    
+
     // If this is a list or map object then add an "adder" method to the builder
     // Add an adder method if this is a List field
     switch (field.type().erasure().name()) {
-        case "List" -> {
-          // Build up the method signature
-          final JMethod listAddMethod = builderClass.method(
-                  JMod.PUBLIC, 
-                  builderClass.narrow(builderClass.typeParams()),
-                  "add" + StringUtils.capitalize(getBuilderName(jsonPropertyName, node)));
+      case "List" -> {
+        // Build up the method signature
+        final JMethod listAddMethod = builderClass.method(
+                JMod.PUBLIC,
+                builderClass.narrow(builderClass.typeParams()),
+                "add" + StringUtils.capitalize(getBuilderName(jsonPropertyName, node)));
 
-          final JVar listAddParam = listAddMethod.param(JMod.FINAL, field.type().boxify().getTypeParameters().get(0), field.name());
-          final JBlock listAddJBlock = listAddMethod.body();
-          listAddJBlock._if(listAddParam.type().boxify().staticInvoke("isEmpty").arg(listAddParam))._then()._return(JExpr._this());
-          final JConditional newListConditional = listAddJBlock._if(JExpr.cast(c, JExpr._this().ref("instance"))
-                  .invoke(getGetterName(jsonPropertyName, param.type(), node)).eq(JExpr._null()));
-          final JBlock newListThenBlock = newListConditional._then();
-          final JBlock newListElseBlock = newListConditional._else();
-          final JVar newListVar = newListThenBlock.decl(JMod.FINAL, field.type(), "list", 
-                  JExpr._new(c.owner().ref(ArrayList.class)));
-          newListThenBlock.invoke(newListVar, "add").arg(listAddParam);
-          newListThenBlock.add(JExpr.cast(c, JExpr._this().ref("instance")).invoke(getSetterName(jsonPropertyName, node)).arg(newListVar));
-          newListElseBlock.add(JExpr.cast(c, JExpr._this().ref("instance")).invoke(getGetterName(jsonPropertyName, param.type(), node)).invoke("add").arg(listAddParam));   
-          
-          listAddJBlock._return(JExpr._this());
-        }
-          
-        case "Map" -> {
-          JMethod mapAddMethod = builderClass.method(
-                  JMod.PUBLIC, 
-                  builderClass.narrow(builderClass.typeParams()),
-                  "add" + StringUtils.capitalize(getBuilderName(jsonPropertyName, node)));
+        final JVar listAddParam = listAddMethod.param(JMod.FINAL, field.type().boxify().getTypeParameters().get(0), field.name());
+        final JBlock listAddJBlock = listAddMethod.body();
+        listAddJBlock._if(listAddParam.type().boxify().staticInvoke("isEmpty").arg(listAddParam))._then()._return(JExpr._this());
+        final JConditional newListConditional = listAddJBlock._if(JExpr.cast(c, JExpr._this().ref("instance"))
+                .invoke(getGetterName(jsonPropertyName, param.type(), node)).eq(JExpr._null()));
+        final JBlock newListThenBlock = newListConditional._then();
+        final JBlock newListElseBlock = newListConditional._else();
+        final JVar newListVar = newListThenBlock.decl(JMod.FINAL, field.type(), "list",
+                JExpr._new(c.owner().ref(ArrayList.class)));
+        newListThenBlock.invoke(newListVar, "add").arg(listAddParam);
+        newListThenBlock.add(JExpr.cast(c, JExpr._this().ref("instance")).invoke(getSetterName(jsonPropertyName, node)).arg(newListVar));
+        newListElseBlock.add(JExpr.cast(c, JExpr._this().ref("instance")).invoke(getGetterName(jsonPropertyName, param.type(), node)).invoke("add").arg(listAddParam));
 
-          JVar mapAddParam = mapAddMethod.param(field.type().boxify(), field.name());
-          JBlock mapAddJBlock = mapAddMethod.body();
-          mapAddJBlock.add(JExpr.cast(c, JExpr._this().ref("instance")).invoke(getSetterName(jsonPropertyName, node)).arg(param));
-          mapAddJBlock._return(JExpr._this());
-        }
+        listAddJBlock._return(JExpr._this());
+      }
+
+      case "Map" -> {
+        JMethod mapAddMethod = builderClass.method(
+                JMod.PUBLIC,
+                builderClass.narrow(builderClass.typeParams()),
+                "add" + StringUtils.capitalize(getBuilderName(jsonPropertyName, node)));
+
+        JVar mapAddParam = mapAddMethod.param(field.type().boxify(), field.name());
+        JBlock mapAddJBlock = mapAddMethod.body();
+        mapAddJBlock.add(JExpr.cast(c, JExpr._this().ref("instance")).invoke(getSetterName(jsonPropertyName, node)).arg(param));
+        mapAddJBlock._return(JExpr._this());
+      }
     }
-    
+
     return builderMethod;
   }
 

@@ -4,9 +4,17 @@
   "title": "Identifier Datatype Schema",
   "type": "object",
   "properties": {
+    "period": {
+      "description": "Time period when id is/was valid for use",
+      "$ref": "period.json"
+    },
     "system": {
       "type": "string",
       "description": "The namespace for the identifier value"
+    },
+    "type": {
+      "description": "Description of identifier",
+      "$ref": "codeableConcept.json"
     },
     "use": {
       "type": "string",

@@ -15,7 +15,16 @@
  */
 package com.expositura.schema2model;
 
+/**
+ * A base class for RuleLogger instances providing basic functionality common to all RuleLogger instances.
+ */
 public abstract class AbstractRuleLogger implements RuleLogger {
+
+  /**
+   * Empty/Default constructor
+   */
+  public AbstractRuleLogger() {
+  }
 
   @Override
   public void debug(String msg) {
@@ -66,13 +75,35 @@ public abstract class AbstractRuleLogger implements RuleLogger {
     }
   }
 
+  /**
+   * Actually log the debug message.
+   * @param msg The message.
+   */
   abstract protected void doDebug(String msg);
 
+  /**
+   * Actually log the error message with associated stack trace.
+   * @param msg The message.
+   * @param e The associated stack trace.
+   */
   abstract protected void doError(String msg, Throwable e);
 
+  /**
+   * Actually log the info message.
+   * @param msg The message.
+   */
   abstract protected void doInfo(String msg);
 
+  /**
+   * Actually log the trace message.
+   * @param msg The message.
+   */
   abstract protected void doTrace(String msg);
 
+  /**
+   * Actually log the warn message with associated stack trace.
+   * @param msg The message.
+   * @param e The associated stack trace.
+   */
   abstract protected void doWarn(String msg, Throwable e);
 }

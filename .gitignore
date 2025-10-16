@@ -24,3 +24,5 @@ hs_err_pid*
 replay_pid*
 /patient-data-model/target/
 /schema2model-maven-plugin/target/
+/target/
+/intake-connectors/target/
