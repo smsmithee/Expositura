@@ -8,7 +8,7 @@
       "type": "array",
       "description": "External ids for this item",
       "items": {
-        "$ref": "datatype/identifier.json"
+        "$ref": "datatype/Identifier.json"
       }
     }
   }

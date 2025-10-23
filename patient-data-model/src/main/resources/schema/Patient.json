@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Patient",
+  "title": "Patient Schema",
+  "type": "object",
+  "properties": {
+    "active": {
+      "type": "boolean",
+      "description": "Whether this paitent's record is active or not"
+    },
+    "identifier": {
+      "type": "array",
+      "description": "Identifiers for this patient",
+      "items": {
+        "$ref": "datatype/Identifier.json"
+      }
+    },
+    "name": {
+      "type": "array",
+      "description": "Names associated with the patient",
+      "items": {
+        "$ref": "datatype/HumanName.json"
+      }
+    }
+  }
+}

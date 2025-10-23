@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/HumanName",
+  "title": "Human Name Datatype Schema",
+  "description": "A name of a human with text, parts and usage information",
+  "type": "object",
+  "properties": {
+    "family": {
+      "type": "string",
+      "description": "Family name (often called 'Surname')"
+    },
+    "given": {
+      "type": "array",
+      "description": "Given names (not always 'first'). Includes middle names. This repeating element order: Given Names appear in the correct order for presenting the name",
+      "items": {
+        "type": "string"
+      }
+    },
+    "period": {
+      "description": "Time period when name was/is in use",
+      "$ref": "period.json"
+    },
+    "prefix": {
+      "type": "array",
+      "description": "Parts that come before the name. This repeating element order: Prefixes appear in the correct order for presenting the name",
+      "items": {
+        "type": "string"
+      }
+    },
+    "suffix": {
+      "type": "array",
+      "description": "Parts that come after the name. This repeating element order: Suffixes appear in the correct order for presenting the name",
+      "items": {
+        "type": "string"
+      }
+    },
+    "text": {
+      "type": "string",
+      "description": "Text representation of the full name"
+    },
+    "use": {
+      "type": "string",
+      "description": "The use of a human name"
+    }
+  }
+}
