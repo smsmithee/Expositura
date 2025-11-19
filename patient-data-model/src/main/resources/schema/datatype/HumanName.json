@@ -18,7 +18,7 @@
     },
     "period": {
       "description": "Time period when name was/is in use",
-      "$ref": "period.json"
+      "$ref": "Period.json"
     },
     "prefix": {
       "type": "array",

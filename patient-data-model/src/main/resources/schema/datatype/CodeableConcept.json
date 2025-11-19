@@ -9,7 +9,7 @@
       "type": "array",
       "description": "Code defined by a terminology system",
       "items": {
-        "$ref": "coding.json"
+        "$ref": "Coding.json"
       }
     },
     "text": {

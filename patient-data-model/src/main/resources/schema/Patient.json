@@ -8,6 +8,29 @@
       "type": "boolean",
       "description": "Whether this paitent's record is active or not"
     },
+    "address": {
+      "type": "array",
+      "description": "An address for the individual",
+      "items": {
+        "$ref": "datatype/Address.json"
+      }
+    },
+    "birthDate": {
+      "description": "The date of birth for the individual",
+      "$ref": "datatype/DateTime.json"
+    },
+    "deceased": {
+      "type": "boolean",
+      "description": "Indicates if the individual is deceased or not"
+    },
+    "deceasedDateTime": {
+      "description": "The date and time of death",
+      "$ref": "datatype/DateTime.json"
+    },
+    "gender": {
+      "type": "string",
+      "description": "The gender of a person used for administrative purposes"
+    },
     "identifier": {
       "type": "array",
       "description": "Identifiers for this patient",
@@ -15,11 +38,38 @@
         "$ref": "datatype/Identifier.json"
       }
     },
+    "maritalStatus": {
+      "description": "Marital (civil) status of a patient",
+      "$ref": "datatype/CodeableConcept.json"
+    },
+    "multipleBirth": {
+      "type": "boolean",
+      "description": "Whether patient is part of a multiple birth"
+    },
+    "multipleBirthOrder": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The order of birth for a multiple birth patient (1st born, 2nd born, etc)"
+    },
     "name": {
       "type": "array",
       "description": "Names associated with the patient",
       "items": {
         "$ref": "datatype/HumanName.json"
+      }
+    },
+    "photo": {
+      "type": "array",
+      "description": "Image of the patient",
+      "items": {
+        "$ref": "datatype/Attachment.json"
+      }
+    },
+    "telecom": {
+      "type": "array",
+      "description": "Contact details for the individual",
+      "items": {
+        "$ref": "datatype/ContactPoint.json"
       }
     }
   }

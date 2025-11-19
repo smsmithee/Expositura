@@ -47,6 +47,8 @@
           <generateBuilders>true</generateBuilders>
           <initializeCollections>false</initializeCollections>
           <useInnerClassBuilders>true</useInnerClassBuilders>
+          <sourceSortOrder>SUBDIRS_FIRST</sourceSortOrder>
+          <useLongIntegers>true</useLongIntegers>
         </configuration>
         <executions>
           <execution>

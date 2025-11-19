@@ -6,7 +6,7 @@
   "properties": {
     "period": {
       "description": "Time period when id is/was valid for use",
-      "$ref": "period.json"
+      "$ref": "Period.json"
     },
     "system": {
       "type": "string",
@@ -14,7 +14,7 @@
     },
     "type": {
       "description": "Description of identifier",
-      "$ref": "codeableConcept.json"
+      "$ref": "CodeableConcept.json"
     },
     "use": {
       "type": "string",

@@ -390,7 +390,7 @@ public class ObjectRule implements Rule<JPackage, JType> {
 
       // If this is an Integer, Double, Float, or Boolean then treat differently from other objects
       switch (fieldVar.type().erasure().name()) {
-        case "Integer", "Double", "Boolean", "Float" ->
+        case "Integer", "Double", "Boolean", "Float", "Long" ->
           body._if(JExpr._null().ne(param.ref(fieldVar)))._then()._return(JExpr.FALSE);
         case "List" ->
           body._if(jclass.owner().ref("org.apache.commons.collections4.CollectionUtils").staticInvoke("isEmpty").arg(param.ref(fieldVar)).not())._then()._return(JExpr.FALSE);

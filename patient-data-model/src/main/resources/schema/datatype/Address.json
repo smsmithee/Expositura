@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/Address",
+  "title": "Address Datatype Schema",
+  "description": "An address expressed using postal conventions",
+  "type": "object",
+  "properties": {
+    "city": {
+      "type": "string",
+      "description": "Name of city, town etc."
+    },
+    "country": {
+      "type": "string",
+      "description": "Country (e.g. may be ISO 3166 2 or 3 letter code)"
+    },
+    "district": {
+      "type": "string",
+      "description": "District name (aka county)"
+    },
+    "line": {
+      "type": "array",
+      "description": "Street name, number, direction & P.O. Box etc. This repeating element order: The order in which lines should appear in an address label",
+      "items": {
+        "type": "string"
+      }
+    },
+    "period": {
+      "description": "Time period when address was/is in use",
+      "$ref": "Period.json"
+    },
+    "state": {
+      "type": "string",
+      "description": "Sub-unit of country (abbreviations ok)"
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Postal code for area"
+    },
+    "text": {
+      "type": "string",
+      "description": "Text representation of the address"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of an address (physical / postal)"
+    },
+    "use": {
+      "type": "string",
+      "description": "The use of an address"
+    }
+  }
+}

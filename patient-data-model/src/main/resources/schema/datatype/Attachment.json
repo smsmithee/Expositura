@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/Attachment",
+  "title": "Attachment Datatype Schema",
+  "description": "This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type.",
+  "type": "object",
+  "properties": {
+    "contentType": {
+      "type": "string",
+      "description": "Mime type of the content, with charset etc."
+    },
+    "creation": {
+      "description": "Date attachment was first created",
+      "$ref": "DateTime.json"
+    },
+    "data": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "description": "Data inline, base64ed"
+    },
+    "duration": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Length in seconds (audio / video)"
+    },
+    "frames": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of frames if > 1 (photo)"
+    },
+    "hash": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "description": "Hash of the data (sha-1, base64ed)"
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Height of the image in pixels (photo/video)"
+    },
+    "language": {
+      "type": "string",
+      "description": "Human language of the content (BCP-47)"
+    },
+    "pages": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of printed pages"
+    },
+    "size": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of bytes of content (if url provided)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Label to display in place of the data"
+    },
+    "url": {
+      "type": "string",
+      "description": "Uri where the data can be found"
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Width of the image in pixels (photo/video)"
+    }
+  }
+}

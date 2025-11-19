@@ -55,6 +55,7 @@ import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
 import com.sun.codemodel.JType;
 import com.sun.codemodel.JVar;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Applies the "enum" schema rule.
@@ -149,6 +150,9 @@ public class EnumRule implements Rule<JClassContainer, JType> {
       addToString(_enum, valueField);
     }
 
+    // Add isEmpty method
+    addIsEmpty(_enum);
+    
     addFieldAccessors(_enum, valueField);
     addEnumConstants(enumDefinition, _enum, schema);
     addFactoryMethod(enumDefinition, _enum);
@@ -316,6 +320,53 @@ public class EnumRule implements Rule<JClassContainer, JType> {
     return new EnumDefinition(nodeName, enumNode, type, enumValues, EnumDefinitionExtensionType.JAVA_ENUMS);
   }
 
+  private void addIsEmpty(JDefinedClass jclass) {
+    Map<String, JFieldVar> fields = jclass.fields();
+    JMethod isEmpty = jclass.method(JMod.PUBLIC + JMod.STATIC, boolean.class, "isEmpty");
+    JVar param = isEmpty.param(JMod.FINAL, jclass, StringUtils.uncapitalize(jclass.name()));
+
+    JBlock body = isEmpty.body();
+
+    // First check to see if the param is null, if so then yes it's empty
+    body._if(JExpr._null().eq(param))._then()._return(JExpr.TRUE);
+    
+    // If all fields are null/empty then this class object is empty
+    for (JFieldVar fieldVar : fields.values()) {
+      // Do not include static fields
+      if ((fieldVar.mods().getValue() & JMod.STATIC) == JMod.STATIC) {
+        continue;
+      }
+
+      // Generally there should not be primitives, we cannot tell if a primite is "empty"
+      if (fieldVar.type().isPrimitive()) {
+        continue;
+      }
+
+      // TODO: Support array's at some point
+      if (fieldVar.type().isArray()) {
+        continue;
+      }
+
+      // If this is an Integer, Double, Float, or Boolean then treat differently from other objects
+      switch (fieldVar.type().erasure().name()) {
+        case "Integer", "Double", "Boolean", "Float" ->
+          body._if(JExpr._null().ne(param.ref(fieldVar)))._then()._return(JExpr.FALSE);
+        case "List" ->
+          body._if(jclass.owner().ref("org.apache.commons.collections4.CollectionUtils").staticInvoke("isEmpty").arg(param.ref(fieldVar)).not())._then()._return(JExpr.FALSE);
+        case "Map" ->
+          body._if(jclass.owner().ref("org.apache.commons.collections4.MapUtils").staticInvoke("isEmpty").arg(param.ref(fieldVar)).not())._then()._return(JExpr.FALSE);
+        case "String" ->
+          body._if(jclass.owner().ref("org.apache.commons.lang3.StringUtils").staticInvoke("isEmpty").arg(param.ref(fieldVar)).not())._then()._return(JExpr.FALSE);
+        default ->
+          body._if(jclass.owner().ref(fieldVar.type().fullName()).staticInvoke("isEmpty").arg(param.ref(fieldVar)).not())._then()._return(JExpr.FALSE);
+      }
+
+    }
+
+    body._return(JExpr.TRUE);
+
+  }
+  
   protected JDefinedClass createEnum(JsonNode node, String nodeName, JClassContainer container) throws ClassAlreadyExistsException {
 
     try {

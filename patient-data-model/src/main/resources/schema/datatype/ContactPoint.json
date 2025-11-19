@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/ContactPoint",
+  "title": "Contact Point Datatype Schema",
+  "description": "Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc",
+  "type": "object",
+  "properties": {
+    "period": {
+      "description": "Time period when the contact point was/is in use",
+      "$ref": "Period.json"
+    },
+    "rank": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Specify preferred order of use (1 = highest)"
+    },
+    "system": {
+      "type": "string",
+      "description": "Telecommunications form for contact point"
+    },
+    "value": {
+      "type": "string",
+      "description": "The actual contact point details"
+    },
+    "use": {
+      "type": "string",
+      "description": "The use of a human name"
+    }
+  }
+}

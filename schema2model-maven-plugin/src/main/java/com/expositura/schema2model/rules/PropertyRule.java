@@ -270,7 +270,7 @@ public class PropertyRule implements Rule<JDefinedClass, JDefinedClass> {
           isEmptyExp = JOp.cond(
                   c.owner().ref("org.apache.commons.collections4.CollectionUtils").staticInvoke("isEmpty").arg(param),
                   JExpr._null(), param);
-        case "Integer", "Double", "Float", "Boolean" ->
+        case "Integer", "Double", "Float", "Boolean", "Long" ->
           isEmptyExp = JOp.cond(JExpr._null().eq(param), JExpr._null(), param);
         default ->
           isEmptyExp = JOp.cond(
@@ -325,7 +325,16 @@ public class PropertyRule implements Rule<JDefinedClass, JDefinedClass> {
 
         final JVar listAddParam = listAddMethod.param(JMod.FINAL, field.type().boxify().getTypeParameters().get(0), field.name());
         final JBlock listAddJBlock = listAddMethod.body();
-        listAddJBlock._if(listAddParam.type().boxify().staticInvoke("isEmpty").arg(listAddParam))._then()._return(JExpr._this());
+        // If String then use StringUtils.isEmpty
+        switch (listAddParam.type().name()) {
+          case "String" -> {
+            listAddJBlock._if(c.owner().ref("org.apache.commons.lang3.StringUtils").staticInvoke("isEmpty").arg(listAddParam))._then()._return(JExpr._this());
+          }
+          default -> {
+            listAddJBlock._if(listAddParam.type().boxify().staticInvoke("isEmpty").arg(listAddParam))._then()._return(JExpr._this());
+          }
+        }
+        
         final JConditional newListConditional = listAddJBlock._if(JExpr.cast(c, JExpr._this().ref("instance"))
                 .invoke(getGetterName(jsonPropertyName, param.type(), node)).eq(JExpr._null()));
         final JBlock newListThenBlock = newListConditional._then();
