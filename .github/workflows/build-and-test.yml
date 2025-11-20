@@ -24,8 +24,10 @@ jobs:
           SHA_SHORT=$(git rev-parse --short "$GITHUB_SHA")
           if [ "${{ github.ref_name }}" == "main" ]; then
             echo "thebuildtag=$(cat .version)-dev-b-${SHA_SHORT}" >> $GITHUB_ENV
-          elif [ "${{ github.ref_name }}" == "release/*" ]]; then
+          elif [ "${{ github.ref_name }}" == "release/*" ]; then
             echo "thebuildtag=$(cat .version)-RC-b-${SHA_SHORT}" >> $GITHUB_ENV
+          else
+            echo "thebuildtag=$(cat .version)-${{ github.ref_name }}-b-${SHA_SHORT}" >> $GITHUB_ENV
           fi
 
     outputs:
