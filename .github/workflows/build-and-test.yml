@@ -5,37 +5,9 @@ on: [push]
 permissions:
   contents: write
 
-env:
-  CI: GHA
-  GHA_USER: ${{ github.actor }}
-  GHA_USER_EMAIL: ${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com
-
 jobs:
-  pre-build-setup:
-    name: Pre-Build Setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-
-      - name: Get Version
-        id: get-tag
-        run: |
-          SHA_SHORT=$(git rev-parse --short "$GITHUB_SHA")
-          if [ "${{ github.ref_name }}" == "main" ]; then
-            echo "thebuildtag=$(cat .version)-dev-b-${SHA_SHORT}" >> $GITHUB_ENV
-          elif [ "${{ github.ref_name }}" == "release/*" ]; then
-            echo "thebuildtag=$(cat .version)-RC-b-${SHA_SHORT}" >> $GITHUB_ENV
-          else
-            echo "thebuildtag=$(cat .version)-${{ github.ref_name }}-b-${SHA_SHORT}" >> $GITHUB_ENV
-          fi
-
-    outputs:
-      buildtag: ${{ env.thebuildtag }}
-
   build:
     name: Expositura Build
-    needs: [pre-build-setup]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -49,14 +21,6 @@ jobs:
           java-distribution: 'temurin'
           java-version: '25'
 
-      # So that the jar versions are consistent with the docker tags, we set the version in the pom.xml
-      # This should only run if the buildtag is not 'NA'
-      - name: Update pom.xml version
-        env:
-          BUILDTAG: ${{ needs.pre-build-setup.outputs.buildtag }}
-        if: ${{ needs.pre-build-setup.outputs.buildtag != 'NA' }}
-        run: mvn --batch-mode --no-transfer-progress versions:set -DnewVersion=$BUILDTAG
-        
       - name: Build and test
         run: mvn --batch-mode --no-transfer-progress clean install
         

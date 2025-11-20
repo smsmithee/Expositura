@@ -8,11 +8,6 @@ on:
 permissions:
   contents: write
 
-env:
-  CI: GHA
-  GHA_USER: ${{ github.actor }}
-  GHA_USER_EMAIL: ${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com
-
 jobs:
   pre-build-setup:
     name: Pre-Build Setup
@@ -24,12 +19,7 @@ jobs:
       - name: Get Version
         id: get-tag
         run: |
-          SHA_SHORT=$(git rev-parse --short "$GITHUB_SHA")
-          if [ "${{ github.ref_name }}" == "main" ]; then
-            echo "thebuildtag=$(cat .version)-dev-b-${SHA_SHORT}" >> $GITHUB_ENV
-          elif [ "${{ github.ref_name }}" == "release/*" ]]; then
-            echo "thebuildtag=$(cat .version)-RC-b-${SHA_SHORT}" >> $GITHUB_ENV
-          fi
+          echo "thebuildtag=${{ github.ref_name }}" >> $GITHUB_ENV
 
     outputs:
       buildtag: ${{ env.thebuildtag }}
@@ -50,14 +40,33 @@ jobs:
           java-distribution: 'temurin'
           java-version: '25'
 
+      - name: Create settings.xml
+        run: |
+          echo "<settings>" > settings.xml
+          echo "  <servers>" >> settings.xml
+          echo "    <server>" >> settings.xml
+          echo "      <id>central</id>" >> settings.xml
+          echo "      <username>${{ secrets.CENTRAL_USERNAME }}</username>" >> settings.xml
+          echo "      <password>${{ secrets.CENTRAL_PASSWORD }}</password>" >> settings.xml
+          echo "    </server>" >> settings.xml
+          echo "  </servers>" >> settings.xml
+          echo "  <profiles>" >> settings.xml
+          echo "    <profile>" >> settings.xml
+          echo "      <id>deploy-to-central</id>" >> settings.xml
+          echo "      <properties>" >> settings.xml
+          echo "        <gpg.passphrase>saGzog-gowzoc-2zoxvi</gpg.passphrase>" >> settings.xml
+          echo "      </properties>" >> settings.xml
+          echo "    </profile>" >> settings.xml
+          echo "  </profiles>" >> settings.xml
+          echo "</settings>" >> settings.xml
+          
       # So that the jar versions are consistent with the docker tags, we set the version in the pom.xml
       # This should only run if the buildtag is not 'NA'
       - name: Update pom.xml version
         env:
           BUILDTAG: ${{ needs.pre-build-setup.outputs.buildtag }}
-        if: ${{ needs.pre-build-setup.outputs.buildtag != 'NA' }}
         run: mvn --batch-mode --no-transfer-progress versions:set -DnewVersion=$BUILDTAG
         
       - name: Build and test
-        run: mvn --batch-mode --no-transfer-progress clean install
+        run: mvn --settings settings.xml --batch-mode --no-transfer-progress -p deploy-to-central clean deploy
         
