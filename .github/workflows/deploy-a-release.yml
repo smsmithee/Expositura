@@ -1,5 +1,5 @@
 ---
-name: Build and test
+name: Deploy a Release
 on: 
   push:
     tags:
