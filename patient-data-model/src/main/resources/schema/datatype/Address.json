@@ -19,7 +19,7 @@
     },
     "line": {
       "type": "array",
-      "description": "Street name, number, direction & P.O. Box etc. This repeating element order: The order in which lines should appear in an address label",
+      "description": "Street name, number, direction and P.O. Box etc. This repeating element order: The order in which lines should appear in an address label",
       "items": {
         "type": "string"
       }
