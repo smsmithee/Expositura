@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/EN",
+  "title": "Entity Name (EN) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "use": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "delimiter": {
+      "type": "array",
+      "items": {
+        "$ref": "ENXP.json"
+      }
+    },
+    "family": {
+      "type": "array",
+      "items": {
+        "$ref": "ENXP.json"
+      }
+    },
+    "given": {
+      "type": "array",
+      "items": {
+        "$ref": "ENXP.json"
+      }
+    },
+    "prefix": {
+      "type": "array",
+      "items": {
+        "$ref": "ENXP.json"
+      }
+    },
+    "suffix": {
+      "type": "array",
+      "items": {
+        "$ref": "ENXP.json"
+      }
+    },
+    "xmlText": {
+      "type": "string"
+    },
+    "validTime": {
+      "$ref": "IVL_TS.json"
+    }
+  }
+}

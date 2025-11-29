@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/CV",
+  "title": "Coded Value Datatype (CV)",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "codeSystem": {
+      "type": "string"
+    },
+    "codeSystemName": {
+      "type": "string"
+    },
+    "codeSystemVersion": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "sdtcValueSet": {
+      "type": "string"
+    },
+    "sdtcValueSetVersion": {
+      "type": "string"
+    },
+    "originalText": {
+      "$ref": "ED.json"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/clazz/RecordTarget",
+  "title": "Record Target Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "../datatype/II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/II.json"
+      }
+    },
+    "typeCode": {
+      "type": "string"
+    },
+    "contextControlCode": {
+      "type": "string"
+    },
+    "patientRole": {
+      "$ref": "PatientRole.json"
+    }
+  }
+}

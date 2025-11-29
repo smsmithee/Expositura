@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/clazz/Organization",
+  "title": "Organization Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "../datatype/II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "determinerCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/II.json"
+      }
+    },
+    "name": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/ON.json"
+      }
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/TEL.json"
+      }
+    },
+    "addr": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/AD.json"
+      }
+    },
+    "standardIndustryClassCode": {
+      "$ref": "../datatype/CE.json"
+    },
+    "asOrganizationPartOf": {
+      "$ref": "OrganizationPartOf.json"
+    }
+  }
+}

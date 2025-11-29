@@ -26,3 +26,4 @@ replay_pid*
 /schema2model-maven-plugin/target/
 /target/
 /intake-connectors/target/
+/ccd-model/target/

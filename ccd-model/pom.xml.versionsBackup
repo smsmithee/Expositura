@@ -6,11 +6,14 @@
   <parent>
     <groupId>io.github.smsmithee.expositura</groupId>
     <artifactId>expositura-parent</artifactId>
-    <version>0.2.0</version>
+    <version>0.1.0-SNAPSHOT</version>
   </parent>
   <artifactId>patient-data-model</artifactId>
   <packaging>jar</packaging>
   <name>Expositura - Patient Data Model</name>
+  <properties>
+    <maven.compiler.release>25</maven.compiler.release>
+  </properties>
   
   <dependencies>
     
@@ -38,17 +41,15 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>io.github.smsmithee.expositura</groupId>
+        <groupId>com.expositura</groupId>
         <artifactId>schema2model-maven-plugin</artifactId>
-        <version>0.2.0</version>
+        <version>${project.version}</version>
         <configuration>
           <sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
           <targetPackage>com.expositura.model</targetPackage>
           <generateBuilders>true</generateBuilders>
           <initializeCollections>false</initializeCollections>
           <useInnerClassBuilders>true</useInnerClassBuilders>
-          <sourceSortOrder>SUBDIRS_FIRST</sourceSortOrder>
-          <useLongIntegers>true</useLongIntegers>
         </configuration>
         <executions>
           <execution>

@@ -8,9 +8,9 @@
     <artifactId>expositura-parent</artifactId>
     <version>0.2.0</version>
   </parent>
-  <artifactId>patient-data-model</artifactId>
+  <artifactId>ccd-model</artifactId>
   <packaging>jar</packaging>
-  <name>Expositura - Patient Data Model</name>
+  <name>Expositura - Ccd Data Model</name>
   
   <dependencies>
     
@@ -40,14 +40,15 @@
       <plugin>
         <groupId>io.github.smsmithee.expositura</groupId>
         <artifactId>schema2model-maven-plugin</artifactId>
-        <version>0.2.0</version>
+        <version>0.4.0-SNAPSHOT</version>
         <configuration>
-          <sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
-          <targetPackage>com.expositura.model</targetPackage>
+          <dateTimeType>java.time.OffsetDateTime</dateTimeType>
           <generateBuilders>true</generateBuilders>
           <initializeCollections>false</initializeCollections>
-          <useInnerClassBuilders>true</useInnerClassBuilders>
+          <sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
           <sourceSortOrder>SUBDIRS_FIRST</sourceSortOrder>
+          <targetPackage>com.expositura.model</targetPackage>
+          <useInnerClassBuilders>true</useInnerClassBuilders>
           <useLongIntegers>true</useLongIntegers>
         </configuration>
         <executions>

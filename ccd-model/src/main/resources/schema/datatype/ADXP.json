@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/ADXP",
+  "title": "Character String (ADXP) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "xmlText": {
+      "type": "string"
+    },
+    "representation": {
+      "type": "string"
+    },
+    "mediaType": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "partType": {
+      "type": "string"
+    }
+  }
+}

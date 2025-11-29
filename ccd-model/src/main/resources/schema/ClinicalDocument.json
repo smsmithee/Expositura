@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/ClinicalDocument",
+  "title": "CCD Schema",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "moodCode": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "object",
+      "properties": {
+        "nullFlavor": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "sdtcValueSet": {
+          "type": "string"
+        },
+        "sdtcValueSetVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "typeId": {
+      "$ref": "datatype/II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "datatype/II.json"
+      }
+    },
+    "id": {
+      "$ref": "datatype/II.json"
+    },
+    "sdtcCategory": {
+      "type": "array",
+      "items": {
+        "$ref": "datatype/CD.json"
+      }
+    },
+    "code": {
+      "$ref": "datatype/CE.json"
+    },
+    "title": {
+      "$ref": "datatype/ST.json"
+    },
+    "sdtcStatusCode": {
+      "$ref": "datatype/CS.json"
+    },
+    "effectiveTime": {
+      "$ref": "datatype/TS.json"
+    },
+    "confidentialityCode": {
+      "$ref": "datatype/CE.json"
+    },
+    "languageCode": {
+      "$ref": "datatype/CS.json"
+    },
+    "setId": {
+      "$ref": "datatype/II.json"
+    },
+    "versionNumber": {
+      "$ref": "datatype/INTT.json"
+    },
+    "copyTime": {
+      "$ref": "datatype/TS.json"
+    },
+    "recordTarget": {
+      "type": "array",
+      "items": {
+        "$ref": "clazz/RecordTarget.json"
+      }
+    }
+  }
+}

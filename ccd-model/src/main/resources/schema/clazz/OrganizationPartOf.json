@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/clazz/OrganizationPartOf",
+  "title": "Organization Part Of Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "../datatype/II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/II.json"
+      }
+    },
+    "sdtcIdentifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "IdentifiedBy.json"
+      }
+    },
+    "code": {
+      "$ref": "../datatype/CE.json"
+    },
+    "statusCode": {
+      "$ref": "../datatype/CS.json"
+    },
+    "effectiveTime": {
+      "$ref": "../datatype/IVL_TS.json"
+    },
+    "wholeOrganization": {
+      "$ref": "Organization.json"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/ST",
+  "title": "Character String (ST) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "xmlText": {
+      "type": "string"
+    },
+    "representation": {
+      "type": "string"
+    },
+    "mediaType": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    }
+  }
+}

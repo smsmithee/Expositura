@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/clazz/Guardian",
+  "title": "Guardian Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "../datatype/II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/II.json"
+      }
+    },
+    "sdtcIdentifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "IdentifiedBy.json"
+      }
+    },
+    "code": {
+      "$ref": "../datatype/CE.json"
+    },
+    "addr": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/AD.json"
+      }
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "../datatype/TEL.json"
+      }
+    },
+    "guardianPerson": {
+      "$ref": "Person.json"
+    },
+    "guardianOrganization": {
+      "$ref": "Organization.json"
+    }
+  }
+}

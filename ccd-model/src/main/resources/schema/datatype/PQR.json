@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/PQR",
+  "title": "Physical Quantity Representation (PQR) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "codeSystem": {
+      "type": "string"
+    },
+    "codeSystemName": {
+      "type": "string"
+    },
+    "codeSystemVersion": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "sdtcValueSet": {
+      "type": "string"
+    },
+    "sdtcValueSetVersion": {
+      "type": "string"
+    },
+    "originalText": {
+      "$ref": "ED.json"
+    },
+    "value": {
+      "type": "number"
+    }    
+  }
+}

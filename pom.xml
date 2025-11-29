@@ -50,7 +50,7 @@
   </properties>
 
   <modules>
-    <module>schema2model-maven-plugin</module>
+    <module>ccd-model</module>
     <module>intake-connectors</module>
     <module>patient-data-model</module>
   </modules>
@@ -80,25 +80,6 @@
       <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
   </dependencies>
-
-<!--  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <configuration>
-          <skipSource>true</skipSource>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>-->
   
   <profiles>
     <profile>

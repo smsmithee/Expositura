@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/CD",
+  "title": "Concept Descriptor Datatype (CD)",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "codeSystem": {
+      "type": "string"
+    },
+    "codeSystemName": {
+      "type": "string"
+    },
+    "codeSystemVersion": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "sdtcValueSet": {
+      "type": "string"
+    },
+    "sdtcValueSetVersion": {
+      "type": "string"
+    },
+    "originalText": {
+      "$ref": "ED.json"
+    },
+    "qualifier": {
+      "type": "array",
+      "items": {
+        "$ref": "CR.json"
+      }
+    },
+    "translation": {
+      "type": "array",
+      "items": {
+        "$ref": "CD.json"
+      }
+    }
+  }
+}

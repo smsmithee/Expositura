@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/TEL",
+  "title": "Telecommunication Address (TEL) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "useablePeriodAsIvlTs": {
+      "$ref": "IVL_TS.json"
+    },
+    "useablePeriodAsEivlTs": {
+      "$ref": "EIVL_TS.json"
+    },
+    "useablePeriodAsPivlTs": {
+      "$ref": "PIVL_TS.json"
+    },
+    "useablePeriodAsSxprTs": {
+      "$ref": "SXPR_TS.json"
+    },
+    "use": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

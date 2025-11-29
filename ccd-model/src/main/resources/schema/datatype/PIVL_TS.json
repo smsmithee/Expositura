@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/PIVL_TS",
+  "title": "Periodic Interval of Time (PIVL_TS) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "operator": {
+      "type": "string"
+    },
+    "phase": {
+      "$ref": "IVL_TS.json"
+    },
+    "period": {
+      "$ref": "PQ.json"
+    },
+    "alignment": {
+      "type": "string"
+    },
+    "institutionSpecified": {
+      "type": "boolean"
+    }
+  }
+}

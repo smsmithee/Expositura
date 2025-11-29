@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/PQ",
+  "title": "Physical Quantity (PQ) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "translation": {
+      "type": "array",
+      "items": {
+        "$ref": "PQR.json"
+      }
+    }
+  }
+}

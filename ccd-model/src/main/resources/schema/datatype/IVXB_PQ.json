@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/datatype/IVXB_PQ",
+  "title": "Interval Boundary Physical Quantity (IVXB_PQ) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "translation": {
+      "type": "array",
+      "items": {
+        "$ref": "PQR.json"
+      }
+    },
+    "inclusive": {
+      "type": "boolean"
+    }
+  }
+}
