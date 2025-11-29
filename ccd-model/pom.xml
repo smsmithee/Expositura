@@ -40,7 +40,7 @@
       <plugin>
         <groupId>io.github.smsmithee.expositura</groupId>
         <artifactId>schema2model-maven-plugin</artifactId>
-        <version>0.4.0-SNAPSHOT</version>
+        <version>0.3.0</version>
         <configuration>
           <dateTimeType>java.time.OffsetDateTime</dateTimeType>
           <generateBuilders>true</generateBuilders>
