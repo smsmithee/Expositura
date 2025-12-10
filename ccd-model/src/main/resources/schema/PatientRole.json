@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/PatientRole",
+  "title": "Patient Role Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "sdtcIdentifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "IdentifiedBy.json"
+      }
+    },
+    "addr": {
+      "type": "array",
+      "items": {
+        "$ref": "AD.json"
+      }
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "TEL.json"
+      }
+    },
+    "patient": {
+      "$ref": "Patient.json"
+    },
+    "providerOrganization": {
+      "$ref": "Organization.json"
+    }
+  }
+}

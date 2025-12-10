@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Person",
+  "title": "Person Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "determinerCode": {
+      "type": "string"
+    },
+    "name": {
+      "type": "array",
+      "items": {
+        "$ref": "PN.json"
+      }
+    },
+    "sdtcDesc": {
+      "$ref": "ED.json"
+    },
+    "sdtcAsPatientRelationship": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nullFlavor": {
+            "type": "string"
+          },
+          "realmCode": {
+            "type": "array",
+            "items": {
+              "$ref": "CS.json"
+            }
+          },
+          "typeId": {
+            "$ref": "II.json"
+          },
+          "templateId": {
+            "type": "array",
+            "items": {
+              "$ref": "II.json"
+            }
+          },
+          "classCode": {
+            "type": "string"
+          },
+          "determinerCode": {
+            "type": "string"
+          },
+          "code": {
+            "$ref": "CE.json"
+          }
+        }
+      }
+    }
+  }
+}

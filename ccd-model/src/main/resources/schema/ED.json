@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/ED",
+  "title": "Encapsulated Data (ED) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "compression": {
+      "type": "string"
+    },
+    "integrityCheck": {
+      "type": "string",
+      "contentEncoding": "base64"
+    },
+    "integrityCheckAlgorithm": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "mediaType": {
+      "type": "string"
+    },
+    "representation": {
+      "type": "string"
+    },
+    "xmlText": {
+      "type": "string"
+    },
+    "reference": {
+      "$ref": "TEL.json"
+    },
+    "thumbnail": {
+      "$ref": "ED.json"
+    }
+  }
+}

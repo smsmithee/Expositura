@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.github.smsmithee.expositura</groupId>
     <artifactId>expositura-parent</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
   </parent>
   <artifactId>ccd-model</artifactId>
   <packaging>jar</packaging>
@@ -40,15 +40,13 @@
       <plugin>
         <groupId>io.github.smsmithee.expositura</groupId>
         <artifactId>schema2model-maven-plugin</artifactId>
-        <version>0.3.0</version>
+        <version>0.4.0</version>
         <configuration>
           <dateTimeType>java.time.OffsetDateTime</dateTimeType>
-          <generateBuilders>true</generateBuilders>
           <initializeCollections>false</initializeCollections>
           <sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
           <sourceSortOrder>SUBDIRS_FIRST</sourceSortOrder>
-          <targetPackage>com.expositura.model</targetPackage>
-          <useInnerClassBuilders>true</useInnerClassBuilders>
+          <targetPackage>com.expositura.model.ccd</targetPackage>
           <useLongIntegers>true</useLongIntegers>
         </configuration>
         <executions>

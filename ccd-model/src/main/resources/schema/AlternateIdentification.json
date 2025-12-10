@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/AlternateIdentification",
+  "title": "Alternate Identification Class",
+  "type": "object",
+  "properties": {
+    "classCode": {
+      "type": "string"
+    },
+    "id": {
+      "$ref": "II.json"
+    },
+    "code": {
+      "$ref": "CD.json"
+    },
+    "statusCode": {
+      "$ref": "CS.json"
+    },
+    "effectiveTime": {
+      "$ref": "IVL_TS.json"
+    }
+  }
+}

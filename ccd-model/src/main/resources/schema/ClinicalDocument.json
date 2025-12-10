@@ -14,71 +14,66 @@
       "type": "string"
     },
     "realmCode": {
-      "type": "object",
-      "properties": {
-        "nullFlavor": {
-          "type": "string"
-        },
-        "code": {
-          "type": "string"
-        },
-        "sdtcValueSet": {
-          "type": "string"
-        },
-        "sdtcValueSetVersion": {
-          "type": "string"
-        }
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
       }
     },
     "typeId": {
-      "$ref": "datatype/II.json"
+      "$ref": "II.json"
     },
     "templateId": {
       "type": "array",
       "items": {
-        "$ref": "datatype/II.json"
+        "$ref": "II.json"
       }
     },
     "id": {
-      "$ref": "datatype/II.json"
+      "$ref": "II.json"
     },
     "sdtcCategory": {
       "type": "array",
       "items": {
-        "$ref": "datatype/CD.json"
+        "$ref": "CD.json"
       }
     },
     "code": {
-      "$ref": "datatype/CE.json"
+      "$ref": "CE.json"
     },
     "title": {
-      "$ref": "datatype/ST.json"
+      "$ref": "ST.json"
     },
     "sdtcStatusCode": {
-      "$ref": "datatype/CS.json"
+      "$ref": "CS.json"
     },
     "effectiveTime": {
-      "$ref": "datatype/TS.json"
+      "$ref": "TS.json"
     },
     "confidentialityCode": {
-      "$ref": "datatype/CE.json"
+      "$ref": "CE.json"
     },
     "languageCode": {
-      "$ref": "datatype/CS.json"
+      "$ref": "CS.json"
     },
-    "setId": {
-      "$ref": "datatype/II.json"
+    "settId": {
+      "$ref": "II.json"
     },
     "versionNumber": {
-      "$ref": "datatype/INTT.json"
+      "$ref": "INTT.json"
     },
     "copyTime": {
-      "$ref": "datatype/TS.json"
+      "$ref": "TS.json"
     },
     "recordTarget": {
       "type": "array",
       "items": {
-        "$ref": "clazz/RecordTarget.json"
+        "$ref": "RecordTarget.json"
+      }
+    },
+    "author": {
+      "type": "array",
+      "items": {
+        "$ref": "Author.json"
       }
     }
   }

@@ -27,3 +27,5 @@ replay_pid*
 /target/
 /intake-connectors/target/
 /ccd-model/target/
+/ccd-parser/target/
+/ccd-parser/nbproject/

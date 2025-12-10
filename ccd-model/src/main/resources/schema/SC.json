@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/SC",
+  "title": "Character String with Code (SC) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "xmlText": {
+      "type": "string"
+    },
+    "representation": {
+      "type": "string"
+    },
+    "mediaType": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "codeSystem": {
+      "type": "string"
+    },
+    "codeSystemName": {
+      "type": "string"
+    },
+    "codeSystemVersion": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    }
+  }
+}

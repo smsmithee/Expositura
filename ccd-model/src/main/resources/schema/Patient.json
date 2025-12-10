@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Patient",
+  "title": "Patient Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "determinerCode": {
+      "type": "string"
+    },
+    "id": {
+      "$ref": "II.json"
+    },
+    "name": {
+      "type": "array",
+      "items": {
+        "$ref": "PN.json"
+      }
+    },
+    "sdtcDesc": {
+      "$ref": "ED.json"
+    },
+    "administrativeGenderCode": {
+      "$ref": "CE.json"
+    },
+    "birthTime": {
+      "$ref": "TS.json"
+    },
+    "sdtcDeceasedInd": {
+      "$ref": "BL.json"
+    },
+    "sdtcDeceasedTime": {
+      "$ref": "TS.json"
+    },
+    "sdtcMultipleBirthInd": {
+      "$ref": "BL.json"
+    },
+    "sdtcMultipleBirthOrderNumber": {
+      "$ref": "INT_POS.json"
+    },
+    "maritalStatusCode": {
+      "$ref": "CE.json"
+    },
+    "religiousAffiliationCode": {
+      "$ref": "CE.json"
+    },
+    "raceCode": {
+      "$ref": "CE.json"
+    },
+    "sdtcRaceCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CE.json"
+      }
+    },
+    "ethnicGroupCode": {
+      "$ref": "CE.json"
+    },
+    "sdtcEthnicGroupCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CE.json"
+      }
+    },
+    "guardian": {
+      "type": "array",
+      "items": {
+        "$ref": "Guardian.json"
+      }
+    },
+    "birthplace": {
+      "$ref": "Birthplace.json"
+    },
+    "languageCommunication": {
+      "type": "array",
+      "items": {
+        "$ref": "LanguageCommunication.json"
+      }
+    }
+  }
+}

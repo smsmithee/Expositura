@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/CR",
+  "title": "Concept Role Datatype (CR)",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "inverted": {
+      "type": "boolean"
+    },
+    "name": {
+      "$ref": "CV.json"
+    },
+    "value": {
+      "$ref": "CD.json"
+    }
+  }
+}

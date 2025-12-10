@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/SXCM_TS",
+  "title": "General Timing Specification (SXCM_TS) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "operator": {
+      "type": "string"
+    }
+  }
+}

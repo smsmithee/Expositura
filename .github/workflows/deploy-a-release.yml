@@ -70,5 +70,5 @@ jobs:
         run: mvn --batch-mode --no-transfer-progress versions:set -DnewVersion=$BUILDTAG
         
       - name: Build and test
-        run: mvn --settings settings.xml --batch-mode --no-transfer-progress -p deploy-to-central clean deploy
+        run: mvn --settings settings.xml --batch-mode --no-transfer-progress -P deploy-to-central clean deploy
         

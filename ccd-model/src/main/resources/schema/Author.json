@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Author",
+  "title": "Author Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "typeCode": {
+      "type": "string"
+    },
+    "contextControlCode": {
+      "type": "string"
+    },
+    "functionCode": {
+      "$ref": "CE.json"
+    },
+    "time": {
+      "$ref": "TS.json"
+    },
+    "assignedAuthor": {
+      "$ref": "AssignedAuthor.json"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Organization",
+  "title": "Organization Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "determinerCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "name": {
+      "type": "array",
+      "items": {
+        "$ref": "ON.json"
+      }
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "TEL.json"
+      }
+    },
+    "addr": {
+      "type": "array",
+      "items": {
+        "$ref": "AD.json"
+      }
+    },
+    "standardIndustryClassCode": {
+      "$ref": "CE.json"
+    },
+    "asOrganizationPartOf": {
+      "$ref": "OrganizationPartOf.json"
+    }
+  }
+}
