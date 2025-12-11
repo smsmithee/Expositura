@@ -15,20 +15,20 @@
  */
 package com.expositura.parser.ccd;
 
-import com.expositura.model.ccd.Guardian;
+import com.expositura.model.ccd.DataEnterer;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * Parses the Guardian XML element to the java object or from the object to the xml
+ * Parses the DataEnterer XML element to the java object or from the object to the xml
  * 
  * @author Sean Smith
  */
-public class GuardianParser {
+public class DataEntererParser {
   
-  public static Guardian fromXml(final Node node) {
-    final Guardian guardian = new Guardian();
+  public static DataEnterer fromXml(final Node node) {
+    final DataEnterer dataEnterer = new DataEnterer();
     
     // First get the attributes if any
     final NamedNodeMap attributes = node.getAttributes();
@@ -37,13 +37,19 @@ public class GuardianParser {
       // nullFlavor
       final Node nullFlavor = attributes.getNamedItem("nullFlavor");
       if (nullFlavor != null) {
-        guardian.setNullFlavor(nullFlavor.getNodeValue());
+        dataEnterer.setNullFlavor(nullFlavor.getNodeValue());
       }
       
-      // classCode
-      final Node classCode = attributes.getNamedItem("classCode");
-      if (classCode != null) {
-        guardian.setClassCode(classCode.getNodeValue());
+      // typeCode
+      final Node typeCode = attributes.getNamedItem("typeCode");
+      if (typeCode != null) {
+        dataEnterer.setTypeCode(typeCode.getNodeValue());
+      }
+      
+      // contextControlCode
+      final Node contextControlCode = attributes.getNamedItem("contextControlCode");
+      if (contextControlCode != null) {
+        dataEnterer.setContextControlCode(contextControlCode.getNodeValue());
       }
       
     }
@@ -56,21 +62,16 @@ public class GuardianParser {
       // Ignore children with no attributes and no children, they are text such as newlines for formatted XML
       if (child.hasAttributes() || child.hasChildNodes()) {
         switch (child.getNamespaceURI() + "|" + child.getLocalName()) {
-          case "urn:hl7-org:v3|realmCode" -> guardian.addRealmCode(CsParser.fromXml(child));
-          case "urn:hl7-org:v3|typeId" -> guardian.setTypeId(IiParser.fromXml(child));
-          case "urn:hl7-org:v3|templateId" -> guardian.addTemplateId(IiParser.fromXml(child));
-          case "urn:hl7-org:v3|id" -> guardian.addId(IiParser.fromXml(child));
-          case "urn:hl7-org:sdtc|identifiedBy" -> guardian.addSdtcIdentifiedBy(SdtcIdentifiedByParser.fromXml(child));
-          case "urn:hl7-org:v3|code" -> guardian.setCode(CeParser.fromXml(child));
-          case "urn:hl7-org:v3|addr" -> guardian.addAddr(AdParser.fromXml(child));
-          case "urn:hl7-org:v3|telecom" -> guardian.addTelecom(TelParser.fromXml(child));
-          case "urn:hl7-org:v3|guardianPerson" -> guardian.setGuardianPerson(PersonParser.fromXml(child));
-          case "urn:hl7-org:v3|guardianOrganization" -> guardian.setGuardianOrganization(OrganizationParser.fromXml(child));
+          case "urn:hl7-org:v3|realmCode" -> dataEnterer.addRealmCode(CsParser.fromXml(child));
+          case "urn:hl7-org:v3|typeId" -> dataEnterer.setTypeId(IiParser.fromXml(child));
+          case "urn:hl7-org:v3|templateId" -> dataEnterer.addTemplateId(IiParser.fromXml(child));
+          case "urn:hl7-org:v3|time" -> dataEnterer.setTime(TsParser.fromXml(child));
+          case "urn:hl7-org:v3|assignedEntity" -> dataEnterer.setAssignedEntity(AssignedEntityParser.fromXml(child));
         }
       }
     }
     
-    return Guardian.isEmpty(guardian) ? null : guardian;
+    return DataEnterer.isEmpty(dataEnterer) ? null : dataEnterer;
   }
           
 }

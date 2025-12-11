@@ -34,7 +34,7 @@
     "sdtcIdentifiedBy": {
       "type": "array",
       "items": {
-        "$ref": "IdentifiedBy.json"
+        "$ref": "SdtcIdentifiedBy.json"
       }
     },
     "addr": {

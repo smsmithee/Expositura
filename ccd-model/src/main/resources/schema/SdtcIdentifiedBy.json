@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/IdentifiedBy",
+  "$id": "https://expositura.health/2020-12/schema/SdtcIdentifiedBy",
   "title": "Identified By Class",
   "type": "object",
   "properties": {

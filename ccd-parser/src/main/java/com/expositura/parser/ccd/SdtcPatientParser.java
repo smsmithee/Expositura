@@ -15,32 +15,20 @@
  */
 package com.expositura.parser.ccd;
 
-import com.expositura.model.ccd.IdentifiedBy;
+import com.expositura.model.ccd.SdtcPatient;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * Parses the IdentifiedBy XML element to the java object or from the object to the xml
+ * Parses the sdtc:Patient XML element to the java object or from the object to the xml
  * 
  * @author Sean Smith
  */
-public class IdentifiedByParser {
+public class SdtcPatientParser {
   
-  public static IdentifiedBy fromXml(final Node node) {
-    final IdentifiedBy identifiedBy = new IdentifiedBy();
-    
-    // First get the attributes if any
-    final NamedNodeMap attributes = node.getAttributes();
-    if (attributes != null && attributes.getLength() > 0) {
-      
-      // typeCode
-      final Node typeCode = attributes.getNamedItem("typeCode");
-      if (typeCode != null) {
-        identifiedBy.setTypeCode(typeCode.getNodeValue());
-      }
-      
-    }
+  public static SdtcPatient fromXml(final Node node) {
+    final SdtcPatient sdtcPatient = new SdtcPatient();
     
     final NodeList nodeList = node.getChildNodes();
     
@@ -50,12 +38,12 @@ public class IdentifiedByParser {
       // Ignore children with no attributes and no children, they are text such as newlines for formatted XML
       if (child.hasAttributes() || child.hasChildNodes()) {
         switch (child.getNamespaceURI() + "|" + child.getLocalName()) {
-          case "urn:hl7-org:sdtc|alternateIdentification" -> identifiedBy.setSdtcAlternateIdentification(AlternateIdentificationParser.fromXml(child));
+          case "urn:hl7-org:sdtc|id" -> sdtcPatient.setId(IiParser.fromXml(child));
         }
       }
     }
     
-    return IdentifiedBy.isEmpty(identifiedBy) ? null : identifiedBy;
+    return SdtcPatient.isEmpty(sdtcPatient) ? null : sdtcPatient;
   }
           
 }

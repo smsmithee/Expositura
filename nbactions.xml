@@ -7,7 +7,7 @@
                 <goal>versions:set</goal>
             </goals>
             <properties>
-                <newVersion>0.3.0</newVersion>
+                <newVersion>0.4.0-SNAPSHOT</newVersion>
             </properties>
         </action>
     </actions>

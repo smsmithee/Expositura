@@ -10,7 +10,7 @@
   
   <groupId>io.github.smsmithee.expositura</groupId>
   <artifactId>expositura-parent</artifactId>
-  <version>0.3.0</version>
+  <version>0.4.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Expositura</name>
   <description>>A set of components for a clinical data analytics platform. Many of the components can be used

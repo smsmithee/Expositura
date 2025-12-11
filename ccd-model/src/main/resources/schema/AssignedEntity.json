@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/OrganizationPartOf",
-  "title": "Organization Part Of Class",
+  "$id": "https://expositura.health/2020-12/schema/AssignedEntity",
+  "title": "Assigned Entity Class",
   "type": "object",
   "properties": {
     "nullFlavor": {
@@ -40,14 +40,31 @@
     "code": {
       "$ref": "CE.json"
     },
-    "statusCode": {
-      "$ref": "CS.json"
+    "addr": {
+      "type": "array",
+      "items": {
+        "$ref": "AD.json"
+      }
     },
-    "effectiveTime": {
-      "$ref": "IVL_TS.json"
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "TEL.json"
+      }
     },
-    "wholeOrganization": {
+    "assignedPerson": {
+      "$ref": "Person.json"
+    },
+    "representedOrganization": {
       "$ref": "Organization.json"
+    },
+    "sdtcPatient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "II.json"
+        }
+      }
     }
   }
 }

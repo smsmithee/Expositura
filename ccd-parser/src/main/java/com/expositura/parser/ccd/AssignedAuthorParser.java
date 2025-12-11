@@ -60,7 +60,7 @@ public class AssignedAuthorParser {
           case "urn:hl7-org:v3|typeId" -> assignedAuthor.setTypeId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|templateId" -> assignedAuthor.addTemplateId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|id" -> assignedAuthor.addId(IiParser.fromXml(child));
-          case "urn:hl7-org:sdtc|identifiedBy" -> assignedAuthor.addSdtcIdentifiedBy(IdentifiedByParser.fromXml(child));
+          case "urn:hl7-org:sdtc|identifiedBy" -> assignedAuthor.addSdtcIdentifiedBy(SdtcIdentifiedByParser.fromXml(child));
           case "urn:hl7-org:v3|code" -> assignedAuthor.setCode(CeParser.fromXml(child));
           case "urn:hl7-org:v3|addr" -> assignedAuthor.addAddr(AdParser.fromXml(child));
           case "urn:hl7-org:v3|telecom" -> assignedAuthor.addTelecom(TelParser.fromXml(child));

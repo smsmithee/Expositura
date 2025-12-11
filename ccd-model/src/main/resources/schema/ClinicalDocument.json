@@ -75,6 +75,9 @@
       "items": {
         "$ref": "Author.json"
       }
+    },
+    "dataEnterer": {
+      "$ref": "DataEnterer.json"
     }
   }
 }

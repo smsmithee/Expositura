@@ -77,6 +77,7 @@ public class ClinicalDocumentParser {
           case "urn:hl7-org:v3|copyTime" -> ccd.setCopyTime(TsParser.fromXml(child));
           case "urn:hl7-org:v3|recordTarget" -> ccd.addRecordTarget(RecordTargetParser.fromXml(child));
           case "urn:hl7-org:v3|author" -> ccd.addAuthor(AuthorParser.fromXml(child));
+          case "urn:hl7-org:v3|dataEnterer" -> ccd.setDataEnterer(DataEntererParser.fromXml(child));
         }
       }
     }
