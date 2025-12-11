@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Informant",
+  "title": "Informant Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "typeCode": {
+      "type": "string"
+    },
+    "contextControlCode": {
+      "type": "string"
+    },
+    "assignedEntity": {
+      "$ref": "AssignedEntity.json"
+    },
+    "relatedEntity": {
+      "$ref": "RelatedEntity.json"
+    }
+  }
+}

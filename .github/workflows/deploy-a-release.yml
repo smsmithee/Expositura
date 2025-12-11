@@ -34,6 +34,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Setup Maven Action
         uses: s4u/setup-maven-action@v1.19.0

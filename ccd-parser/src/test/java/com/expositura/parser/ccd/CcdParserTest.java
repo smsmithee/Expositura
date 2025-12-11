@@ -61,7 +61,7 @@ public class CcdParserTest {
   public void testParseFromCcd_InputSource() throws Exception {
     System.out.println("parseFromCcd(InputSource)");
     final InputStream ccdStream = CcdParserTest.class.getResourceAsStream("/ccds/Practice_Fusion/AliceNewmanApi.xml");
-    //final String test = IOUtils.toString(ccdStream, StandardCharsets.UTF_8);
+    //final InputStream ccdStream = CcdParserTest.class.getResourceAsStream("/ccds/360_Oncology/Alice_Newman_health_summary Delegate.xml");
     final ClinicalDocument result = CcdParser.parseFromCcd(new InputSource(ccdStream));
     System.out.println("result = \n" + mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
   }

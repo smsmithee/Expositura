@@ -75,9 +75,9 @@ public class CcdParser {
     final DocumentBuilder builder = BUILDER.get();
     final Document doc = builder.parse(ccdAsInputSource);
 
-    validateCcdDocument(doc);
+    final Node clinicalDocumentNode = validateCcdDocument(doc);
     
-    final ClinicalDocument ccd = ClinicalDocumentParser.fromXml(doc.getFirstChild());
+    final ClinicalDocument ccd = ClinicalDocumentParser.fromXml(clinicalDocumentNode);
     
     return ClinicalDocument.isEmpty(ccd) ? null : ccd;
   }
@@ -85,18 +85,27 @@ public class CcdParser {
   /**
    * Validate that this is a CCD Document. There should be one child node with the correct namespace and local name
    */
-  private static void validateCcdDocument(final Document ccd) throws InvalidCcdException {
+  private static Node validateCcdDocument(final Document ccd) throws InvalidCcdException {
     
     // Validate that there are any XML nodes in the document
     if (!ccd.hasChildNodes()) {
       throw new InvalidCcdException("CCD does not have any XML elements to parse");
     }
     
-    if (ccd.getChildNodes().getLength() != 1) {
-      throw new InvalidCcdException("CCD must have a single top level XML element");
+    // Loop thru children and find how many are elements, don't count comments, or instructions, etc
+    int elementCount = 0;
+    Node clinicalDocNode = null;
+    
+    for (int i = 0; i < ccd.getChildNodes().getLength(); i++) {
+      if (ccd.getChildNodes().item(i).getNodeType() == 1) {
+        elementCount++;
+        clinicalDocNode = ccd.getChildNodes().item(i);
+      }
     }
     
-    final Node clinicalDocNode = ccd.getFirstChild();
+    if (elementCount != 1) {
+      throw new InvalidCcdException("CCD must have a single top level XML element");
+    }
     
     if (!HL7_NAMESPACE.equals(clinicalDocNode.getNamespaceURI())) {
       throw new InvalidCcdException("Top level element must have namespace of '" + HL7_NAMESPACE + "'. Instead found '" 
@@ -107,5 +116,7 @@ public class CcdParser {
       throw new InvalidCcdException("Top level element must be 'ClinicalDocument'. Instead found '" 
               + clinicalDocNode.getLocalName() + "'");
     }
+    
+    return clinicalDocNode;
   }
 }

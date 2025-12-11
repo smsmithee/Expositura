@@ -78,6 +78,12 @@
     },
     "dataEnterer": {
       "$ref": "DataEnterer.json"
+    },
+    "informant": {
+      "type": "array",
+      "items": {
+        "$ref": "Informant.json"
+      }
     }
   }
 }
