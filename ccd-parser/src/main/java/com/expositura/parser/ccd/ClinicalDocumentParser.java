@@ -81,6 +81,14 @@ public class ClinicalDocumentParser {
           case "urn:hl7-org:v3|informant" -> ccd.addInformant(InformantParser.fromXml(child));
           case "urn:hl7-org:v3|custodian" -> ccd.setCustodian(CustodianParser.fromXml(child));
           case "urn:hl7-org:v3|informationRecipient" -> ccd.addInformationRecipient(InformationRecipientParser.fromXml(child));
+          case "urn:hl7-org:v3|legalAuthenticator" -> ccd.setLegalAuthenticator(LegalAuthenticatorParser.fromXml(child));
+          case "urn:hl7-org:v3|authenticator" -> ccd.addAuthenticator(AuthenticatorParser.fromXml(child));
+          case "urn:hl7-org:v3|participant" -> ccd.addParticipant(Participant1Parser.fromXml(child));
+          case "urn:hl7-org:v3|inFulfillmentOf" -> ccd.addInFulfillmentOf(InFulfillmentOfParser.fromXml(child));
+          case "urn:hl7-org:v3|documentationOf" -> ccd.addDocumentationOf(DocumentationOfParser.fromXml(child));
+          case "urn:hl7-org:v3|relatedDocument" -> ccd.addRelatedDocument(RelatedDocumentParser.fromXml(child));
+          case "urn:hl7-org:v3|authorization" -> ccd.addAuthorization(AuthorizationParser.fromXml(child));
+          case "urn:hl7-org:v3|componentOf" -> ccd.setComponentOf(ComponentOfParser.fromXml(child));
         }
       }
     }

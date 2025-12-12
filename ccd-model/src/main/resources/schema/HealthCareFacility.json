@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/HealthCareFacility",
+  "title": "Health Care Facility Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "identifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "IdentifiedBy.json"
+      }
+    },
+    "code": {
+      "$ref": "CE.json"
+    },
+    "location": {
+      "$ref": "Place.json"
+    },
+    "serviceProviderOrganization": {
+      "$ref": "Organization.json"
+    }
+  }
+}

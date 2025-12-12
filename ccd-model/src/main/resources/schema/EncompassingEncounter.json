@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/EncompassingEncounter",
+  "title": "Encompassing Encounter Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "moodCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "code": {
+      "$ref": "CE.json"
+    },
+    "effectiveTime": {
+      "$ref": "IVL_TS.json"
+    },
+    "admissionReferralSourceCode": {
+      "$ref": "CE.json"
+    },
+    "dischargeDispositionCode": {
+      "$ref": "CE.json"
+    },
+    "responsibleParty": {
+      "type": "object",
+      "properties": {
+        "nullFlavor": {
+          "type": "string"
+        },
+        "realmCode": {
+          "type": "array",
+          "items": {
+            "$ref": "CS.json"
+          }
+        },
+        "typeId": {
+          "$ref": "II.json"
+        },
+        "templateId": {
+          "type": "array",
+          "items": {
+            "$ref": "II.json"
+          }
+        },
+        "typeCode": {
+          "type": "string"
+        },
+        "assignedEntity": {
+          "$ref": "AssignedEntity.json"
+        }
+      }
+    },
+    "encounterParticipant": {
+      "type": "array",
+      "items": {
+        "$ref": "EncounterParticipant.json"
+      }
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "nullFlavor": {
+          "type": "string"
+        },
+        "realmCode": {
+          "type": "array",
+          "items": {
+            "$ref": "CS.json"
+          }
+        },
+        "typeId": {
+          "$ref": "II.json"
+        },
+        "templateId": {
+          "type": "array",
+          "items": {
+            "$ref": "II.json"
+          }
+        },
+        "typeCode": {
+          "type": "string"
+        },
+        "healthCareFacility": {
+          "$ref": "HealthCareFacility.json"
+        }
+      }
+    }
+  }
+}

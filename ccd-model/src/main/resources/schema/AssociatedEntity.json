@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/AssociatedEntity",
+  "title": "Associated Entity Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "identifiedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "IdentifiedBy.json"
+      }
+    },
+    "code": {
+      "$ref": "CE.json"
+    },
+    "specialty": {
+      "type": "array",
+      "items": {
+        "$ref": "CE.json"
+      }
+    },
+    "addr": {
+      "type": "array",
+      "items": {
+        "$ref": "AD.json"
+      }
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "TEL.json"
+      }
+    },
+    "associatedPerson": {
+      "$ref": "Person.json"
+    },
+    "scopingOrganization": {
+      "$ref": "Organization.json"
+    }
+  }
+}

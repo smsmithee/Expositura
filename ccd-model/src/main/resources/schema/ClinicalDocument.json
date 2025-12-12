@@ -93,6 +93,48 @@
       "items": {
         "$ref": "InformationRecipient.json"
       }
+    },
+    "legalAuthenticator": {
+      "$ref": "LegalAuthenticator.json"
+    },
+    "authenticator": {
+      "type": "array",
+      "items": {
+        "$ref": "Authenticator.json"
+      }
+    },
+    "participant": {
+      "type": "array",
+      "items": {
+        "$ref": "Participant1.json"
+      }
+    },
+    "inFulfillmentOf": {
+      "type": "array",
+      "items": {
+        "$ref": "InFulfillmentOf.json"
+      }
+    },
+    "documentationOf": {
+      "type": "array",
+      "items": {
+        "$ref": "DocumentationOf.json"
+      }
+    },
+    "relatedDocument": {
+      "type": "array",
+      "items": {
+        "$ref": "RelatedDocument.json"
+      }
+    },
+    "authorization": {
+      "type": "array",
+      "items": {
+        "$ref": "Authorization.json"
+      }
+    },
+    "componentOf": {
+      "$ref": "ComponentOf.json"
     }
   }
 }
