@@ -31,7 +31,7 @@
     "id": {
       "$ref": "II.json"
     },
-    "sdtcCategory": {
+    "category": {
       "type": "array",
       "items": {
         "$ref": "CD.json"
@@ -43,7 +43,7 @@
     "title": {
       "$ref": "ST.json"
     },
-    "sdtcStatusCode": {
+    "statusCode": {
       "$ref": "CS.json"
     },
     "effectiveTime": {
@@ -83,6 +83,15 @@
       "type": "array",
       "items": {
         "$ref": "Informant.json"
+      }
+    },
+    "custodian": {
+      "$ref": "Custodian.json"
+    },
+    "informationRecipient": {
+      "type": "array",
+      "items": {
+        "$ref": "InformationRecipient.json"
       }
     }
   }

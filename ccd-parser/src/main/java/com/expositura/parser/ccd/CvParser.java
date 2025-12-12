@@ -71,15 +71,15 @@ public class CvParser {
       }
       
       // sdtcValueSet
-      final Node sdtcValueSet = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSet");
-      if (sdtcValueSet != null) {
-        cv.setSdtcValueSet(sdtcValueSet.getNodeValue());
+      final Node valueSet = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSet");
+      if (valueSet != null) {
+        cv.setValueSet(valueSet.getNodeValue());
       }
       
       // sdtcValueSetVersion
-      final Node sdtcValueSetVersion = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSetVersion");
-      if (sdtcValueSetVersion != null) {
-        cv.setSdtcValueSetVersion(sdtcValueSetVersion.getNodeValue());
+      final Node valueSetVersion = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSetVersion");
+      if (valueSetVersion != null) {
+        cv.setValueSetVersion(valueSetVersion.getNodeValue());
       }
     }
     

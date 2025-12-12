@@ -60,7 +60,7 @@ public class PatientRoleParser {
           case "urn:hl7-org:v3|typeId" -> patientRole.setTypeId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|templateId" -> patientRole.addTemplateId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|id" -> patientRole.addId(IiParser.fromXml(child));
-          case "urn:hl7-org:sdtc|identifiedBy" -> patientRole.addSdtcIdentifiedBy(SdtcIdentifiedByParser.fromXml(child));
+          case "urn:hl7-org:sdtc|identifiedBy" -> patientRole.addIdentifiedBy(IdentifiedByParser.fromXml(child));
           case "urn:hl7-org:v3|addr" -> patientRole.addAddr(AdParser.fromXml(child));
           case "urn:hl7-org:v3|telecom" -> patientRole.addTelecom(TelParser.fromXml(child));
           case "urn:hl7-org:v3|patient" -> patientRole.setPatient(PatientParser.fromXml(child));

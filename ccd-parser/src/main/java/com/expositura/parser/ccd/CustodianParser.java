@@ -15,20 +15,20 @@
  */
 package com.expositura.parser.ccd;
 
-import com.expositura.model.ccd.SdtcAsPatientRelationship;
+import com.expositura.model.ccd.Custodian;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * Parses the sdtc:AsPatientRelationship XML element to the java object or from the object to the xml
+ * Parses the Custodian XML element to the java object or from the object to the xml
  * 
  * @author Sean Smith
  */
-public class SdtcAsPatientRelationshipParser {
+public class CustodianParser {
   
-  public static SdtcAsPatientRelationship fromXml(final Node node) {
-    final SdtcAsPatientRelationship sdtcAsPatientRelationship = new SdtcAsPatientRelationship();
+  public static Custodian fromXml(final Node node) {
+    final Custodian custodian = new Custodian();
     
     // First get the attributes if any
     final NamedNodeMap attributes = node.getAttributes();
@@ -37,19 +37,13 @@ public class SdtcAsPatientRelationshipParser {
       // nullFlavor
       final Node nullFlavor = attributes.getNamedItem("nullFlavor");
       if (nullFlavor != null) {
-        sdtcAsPatientRelationship.setNullFlavor(nullFlavor.getNodeValue());
+        custodian.setNullFlavor(nullFlavor.getNodeValue());
       }
       
-      // classCode
-      final Node classCode = attributes.getNamedItem("classCode");
-      if (classCode != null) {
-        sdtcAsPatientRelationship.setClassCode(classCode.getNodeValue());
-      }
-      
-      // determinerCode
-      final Node determinerCode = attributes.getNamedItem("determinerCode");
-      if (determinerCode != null) {
-        sdtcAsPatientRelationship.setDeterminerCode(determinerCode.getNodeValue());
+      // typeCode
+      final Node typeCode = attributes.getNamedItem("typeCode");
+      if (typeCode != null) {
+        custodian.setTypeCode(typeCode.getNodeValue());
       }
       
     }
@@ -62,15 +56,15 @@ public class SdtcAsPatientRelationshipParser {
       // Ignore children with no attributes and no children, they are text such as newlines for formatted XML
       if (child.hasAttributes() || child.hasChildNodes()) {
         switch (child.getNamespaceURI() + "|" + child.getLocalName()) {
-          case "urn:hl7-org:v3|realmCode" -> sdtcAsPatientRelationship.addRealmCode(CsParser.fromXml(child));
-          case "urn:hl7-org:v3|typeId" -> sdtcAsPatientRelationship.setTypeId(IiParser.fromXml(child));
-          case "urn:hl7-org:v3|templateId" -> sdtcAsPatientRelationship.addTemplateId(IiParser.fromXml(child));
-          case "urn:hl7-org:sdtc|code" -> sdtcAsPatientRelationship.setCode(CeParser.fromXml(child));
+          case "urn:hl7-org:v3|realmCode" -> custodian.addRealmCode(CsParser.fromXml(child));
+          case "urn:hl7-org:v3|typeId" -> custodian.setTypeId(IiParser.fromXml(child));
+          case "urn:hl7-org:v3|templateId" -> custodian.addTemplateId(IiParser.fromXml(child));
+          case "urn:hl7-org:v3|assignedCustodian" -> custodian.setAssignedCustodian(AssignedCustodianParser.fromXml(child));
         }
       }
     }
     
-    return SdtcAsPatientRelationship.isEmpty(sdtcAsPatientRelationship) ? null : sdtcAsPatientRelationship;
+    return Custodian.isEmpty(custodian) ? null : custodian;
   }
           
 }

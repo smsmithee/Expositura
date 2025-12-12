@@ -71,15 +71,15 @@ public class PqrParser {
       }
       
       // sdtcValueSet
-      final Node sdtcValueSet = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSet");
-      if (sdtcValueSet != null) {
-        pqr.setSdtcValueSet(sdtcValueSet.getNodeValue());
+      final Node valueSet = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSet");
+      if (valueSet != null) {
+        pqr.setValueSet(valueSet.getNodeValue());
       }
       
       // sdtcValueSetVersion
-      final Node sdtcValueSetVersion = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSetVersion");
-      if (sdtcValueSetVersion != null) {
-        pqr.setSdtcValueSetVersion(sdtcValueSetVersion.getNodeValue());
+      final Node valueSetVersion = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSetVersion");
+      if (valueSetVersion != null) {
+        pqr.setValueSetVersion(valueSetVersion.getNodeValue());
       }
       
       // value

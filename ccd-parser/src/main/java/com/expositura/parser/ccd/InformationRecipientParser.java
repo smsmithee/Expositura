@@ -15,29 +15,35 @@
  */
 package com.expositura.parser.ccd;
 
-import com.expositura.model.ccd.SdtcIdentifiedBy;
+import com.expositura.model.ccd.InformationRecipient;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * Parses the IdentifiedBy XML element to the java object or from the object to the xml
+ * Parses the Informant XML element to the java object or from the object to the xml
  * 
  * @author Sean Smith
  */
-public class SdtcIdentifiedByParser {
+public class InformationRecipientParser {
   
-  public static SdtcIdentifiedBy fromXml(final Node node) {
-    final SdtcIdentifiedBy sdtcIdentifiedBy = new SdtcIdentifiedBy();
+  public static InformationRecipient fromXml(final Node node) {
+    final InformationRecipient informant = new InformationRecipient();
     
     // First get the attributes if any
     final NamedNodeMap attributes = node.getAttributes();
     if (attributes != null && attributes.getLength() > 0) {
       
+      // nullFlavor
+      final Node nullFlavor = attributes.getNamedItem("nullFlavor");
+      if (nullFlavor != null) {
+        informant.setNullFlavor(nullFlavor.getNodeValue());
+      }
+      
       // typeCode
       final Node typeCode = attributes.getNamedItem("typeCode");
       if (typeCode != null) {
-        sdtcIdentifiedBy.setTypeCode(typeCode.getNodeValue());
+        informant.setTypeCode(typeCode.getNodeValue());
       }
       
     }
@@ -50,12 +56,15 @@ public class SdtcIdentifiedByParser {
       // Ignore children with no attributes and no children, they are text such as newlines for formatted XML
       if (child.hasAttributes() || child.hasChildNodes()) {
         switch (child.getNamespaceURI() + "|" + child.getLocalName()) {
-          case "urn:hl7-org:sdtc|alternateIdentification" -> sdtcIdentifiedBy.setSdtcAlternateIdentification(AlternateIdentificationParser.fromXml(child));
+          case "urn:hl7-org:v3|realmCode" -> informant.addRealmCode(CsParser.fromXml(child));
+          case "urn:hl7-org:v3|typeId" -> informant.setTypeId(IiParser.fromXml(child));
+          case "urn:hl7-org:v3|templateId" -> informant.addTemplateId(IiParser.fromXml(child));
+          case "urn:hl7-org:v3|intendedRecipient" -> informant.setIntendedRecipient(IntendedRecipientParser.fromXml(child));
         }
       }
     }
     
-    return SdtcIdentifiedBy.isEmpty(sdtcIdentifiedBy) ? null : sdtcIdentifiedBy;
+    return InformationRecipient.isEmpty(informant) ? null : informant;
   }
           
 }

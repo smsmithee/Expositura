@@ -37,7 +37,7 @@
         "$ref": "PN.json"
       }
     },
-    "sdtcDesc": {
+    "desc": {
       "$ref": "ED.json"
     },
     "administrativeGenderCode": {
@@ -46,16 +46,16 @@
     "birthTime": {
       "$ref": "TS.json"
     },
-    "sdtcDeceasedInd": {
+    "deceasedInd": {
       "$ref": "BL.json"
     },
-    "sdtcDeceasedTime": {
+    "deceasedTime": {
       "$ref": "TS.json"
     },
-    "sdtcMultipleBirthInd": {
+    "multipleBirthInd": {
       "$ref": "BL.json"
     },
-    "sdtcMultipleBirthOrderNumber": {
+    "multipleBirthOrderNumber": {
       "$ref": "INT_POS.json"
     },
     "maritalStatusCode": {
@@ -65,18 +65,12 @@
       "$ref": "CE.json"
     },
     "raceCode": {
-      "$ref": "CE.json"
-    },
-    "sdtcRaceCode": {
       "type": "array",
       "items": {
         "$ref": "CE.json"
       }
     },
     "ethnicGroupCode": {
-      "$ref": "CE.json"
-    },
-    "sdtcEthnicGroupCode": {
       "type": "array",
       "items": {
         "$ref": "CE.json"

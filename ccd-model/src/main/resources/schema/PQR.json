@@ -22,10 +22,10 @@
     "displayName": {
       "type": "string"
     },
-    "sdtcValueSet": {
+    "valueSet": {
       "type": "string"
     },
-    "sdtcValueSetVersion": {
+    "valueSetVersion": {
       "type": "string"
     },
     "originalText": {

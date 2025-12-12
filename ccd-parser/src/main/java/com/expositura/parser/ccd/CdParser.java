@@ -71,15 +71,15 @@ public class CdParser {
       }
       
       // sdtcValueSet
-      final Node sdtcValueSet = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSet");
-      if (sdtcValueSet != null) {
-        cd.setSdtcValueSet(sdtcValueSet.getNodeValue());
+      final Node valueSet = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSet");
+      if (valueSet != null) {
+        cd.setValueSet(valueSet.getNodeValue());
       }
       
-      // sdtcValueSetVersion
-      final Node sdtcValueSetVersion = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSetVersion");
-      if (sdtcValueSetVersion != null) {
-        cd.setSdtcValueSetVersion(sdtcValueSetVersion.getNodeValue());
+      // valueSetVersion
+      final Node valueSetVersion = attributes.getNamedItemNS("urn:hl7-org:sdtc","valueSetVersion");
+      if (valueSetVersion != null) {
+        cd.setValueSetVersion(valueSetVersion.getNodeValue());
       }
     }
     

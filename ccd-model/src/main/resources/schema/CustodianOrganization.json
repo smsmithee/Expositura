@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/AssignedAuthor",
-  "title": "Assigned Author Class",
+  "$id": "https://expositura.health/2020-12/schema/CustodianOrganization",
+  "title": "Custodian Organization Class",
   "type": "object",
   "properties": {
     "nullFlavor": {
@@ -25,26 +25,17 @@
     "classCode": {
       "type": "string"
     },
+    "determinerCode": {
+      "type": "string"
+    },
     "id": {
       "type": "array",
       "items": {
         "$ref": "II.json"
       }
     },
-    "identifiedBy": {
-      "type": "array",
-      "items": {
-        "$ref": "IdentifiedBy.json"
-      }
-    },
-    "code": {
-      "$ref": "CE.json"
-    },
-    "addr": {
-      "type": "array",
-      "items": {
-        "$ref": "AD.json"
-      }
+    "name": {
+      "$ref": "ON.json"
     },
     "telecom": {
       "type": "array",
@@ -52,14 +43,8 @@
         "$ref": "TEL.json"
       }
     },
-    "assignedPerson": {
-      "$ref": "Person.json"
-    },
-    "assignedAuthoringDevice": {
-      "$ref": "AuthoringDevice.json"
-    },
-    "representedOrganization": {
-      "$ref": "Organization.json"
+    "addr": {
+      "$ref": "AD.json"
     }
   }
 }

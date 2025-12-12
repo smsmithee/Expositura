@@ -31,10 +31,10 @@
         "$ref": "II.json"
       }
     },
-    "sdtcIdentifiedBy": {
+    "identifiedBy": {
       "type": "array",
       "items": {
-        "$ref": "SdtcIdentifiedBy.json"
+        "$ref": "IdentifiedBy.json"
       }
     },
     "code": {

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/AssignedAuthor",
-  "title": "Assigned Author Class",
+  "$id": "https://expositura.health/2020-12/schema/IntendedRecipient",
+  "title": "Intended Recipient Class",
   "type": "object",
   "properties": {
     "nullFlavor": {
@@ -31,14 +31,11 @@
         "$ref": "II.json"
       }
     },
-    "identifiedBy": {
+    "idenfifiedBy": {
       "type": "array",
       "items": {
         "$ref": "IdentifiedBy.json"
       }
-    },
-    "code": {
-      "$ref": "CE.json"
     },
     "addr": {
       "type": "array",
@@ -52,13 +49,10 @@
         "$ref": "TEL.json"
       }
     },
-    "assignedPerson": {
+    "informationRecipient": {
       "$ref": "Person.json"
     },
-    "assignedAuthoringDevice": {
-      "$ref": "AuthoringDevice.json"
-    },
-    "representedOrganization": {
+    "receivedOrganization": {
       "$ref": "Organization.json"
     }
   }

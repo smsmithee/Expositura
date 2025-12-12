@@ -60,7 +60,7 @@ public class OrganizationPartOfParser {
           case "urn:hl7-org:v3|typeId" -> organizationPartOf.setTypeId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|templateId" -> organizationPartOf.addTemplateId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|id" -> organizationPartOf.addId(IiParser.fromXml(child));
-          case "urn:hl7-org:sdtc|identifiedBy" -> organizationPartOf.addSdtcIdentifiedBy(SdtcIdentifiedByParser.fromXml(child));
+          case "urn:hl7-org:sdtc|identifiedBy" -> organizationPartOf.addIdentifiedBy(IdentifiedByParser.fromXml(child));
           case "urn:hl7-org:v3|code" -> organizationPartOf.setCode(CeParser.fromXml(child));
           case "urn:hl7-org:v3|statusCode" -> organizationPartOf.setStatusCode(CsParser.fromXml(child));
           case "urn:hl7-org:v3|effectiveTime" -> organizationPartOf.setEffectiveTime(IvlTsParser.fromXml(child));

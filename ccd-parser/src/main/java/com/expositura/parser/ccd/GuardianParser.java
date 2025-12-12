@@ -60,7 +60,7 @@ public class GuardianParser {
           case "urn:hl7-org:v3|typeId" -> guardian.setTypeId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|templateId" -> guardian.addTemplateId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|id" -> guardian.addId(IiParser.fromXml(child));
-          case "urn:hl7-org:sdtc|identifiedBy" -> guardian.addSdtcIdentifiedBy(SdtcIdentifiedByParser.fromXml(child));
+          case "urn:hl7-org:sdtc|identifiedBy" -> guardian.addIdentifiedBy(IdentifiedByParser.fromXml(child));
           case "urn:hl7-org:v3|code" -> guardian.setCode(CeParser.fromXml(child));
           case "urn:hl7-org:v3|addr" -> guardian.addAddr(AdParser.fromXml(child));
           case "urn:hl7-org:v3|telecom" -> guardian.addTelecom(TelParser.fromXml(child));

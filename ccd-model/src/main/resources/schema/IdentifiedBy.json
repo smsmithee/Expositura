@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/SdtcIdentifiedBy",
+  "$id": "https://expositura.health/2020-12/schema/IdentifiedBy",
   "title": "Identified By Class",
   "type": "object",
   "properties": {
     "typeCode": {
       "type": "string"
     },
-    "sdtcAlternateIdentification": {
+    "alternateIdentification": {
       "$ref": "AlternateIdentification.json"
     }
   }

@@ -15,20 +15,20 @@
  */
 package com.expositura.parser.ccd;
 
-import com.expositura.model.ccd.Person;
+import com.expositura.model.ccd.AsPatientRelationship;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * Parses the Person XML element to the java object or from the object to the xml
+ * Parses the sdtc:AsPatientRelationship XML element to the java object or from the object to the xml
  * 
  * @author Sean Smith
  */
-public class PersonParser {
+public class AsPatientRelationshipParser {
   
-  public static Person fromXml(final Node node) {
-    final Person person = new Person();
+  public static AsPatientRelationship fromXml(final Node node) {
+    final AsPatientRelationship asPatientRelationship = new AsPatientRelationship();
     
     // First get the attributes if any
     final NamedNodeMap attributes = node.getAttributes();
@@ -37,19 +37,19 @@ public class PersonParser {
       // nullFlavor
       final Node nullFlavor = attributes.getNamedItem("nullFlavor");
       if (nullFlavor != null) {
-        person.setNullFlavor(nullFlavor.getNodeValue());
+        asPatientRelationship.setNullFlavor(nullFlavor.getNodeValue());
       }
       
       // classCode
       final Node classCode = attributes.getNamedItem("classCode");
       if (classCode != null) {
-        person.setClassCode(classCode.getNodeValue());
+        asPatientRelationship.setClassCode(classCode.getNodeValue());
       }
       
       // determinerCode
       final Node determinerCode = attributes.getNamedItem("determinerCode");
       if (determinerCode != null) {
-        person.setDeterminerCode(determinerCode.getNodeValue());
+        asPatientRelationship.setDeterminerCode(determinerCode.getNodeValue());
       }
       
     }
@@ -62,17 +62,15 @@ public class PersonParser {
       // Ignore children with no attributes and no children, they are text such as newlines for formatted XML
       if (child.hasAttributes() || child.hasChildNodes()) {
         switch (child.getNamespaceURI() + "|" + child.getLocalName()) {
-          case "urn:hl7-org:v3|realmCode" -> person.addRealmCode(CsParser.fromXml(child));
-          case "urn:hl7-org:v3|typeId" -> person.setTypeId(IiParser.fromXml(child));
-          case "urn:hl7-org:v3|templateId" -> person.addTemplateId(IiParser.fromXml(child));
-          case "urn:hl7-org:v3|name" -> person.addName(PnParser.fromXml(child));
-          case "urn:hl7-org:sdtc|sdtcDesc" -> person.setDesc(EdParser.fromXml(child));
-          case "urn:hl7-org:sdtc|sdtcAsPatientRelationship" -> person.addAsPatientRelationship(AsPatientRelationshipParser.fromXml(child));
+          case "urn:hl7-org:v3|realmCode" -> asPatientRelationship.addRealmCode(CsParser.fromXml(child));
+          case "urn:hl7-org:v3|typeId" -> asPatientRelationship.setTypeId(IiParser.fromXml(child));
+          case "urn:hl7-org:v3|templateId" -> asPatientRelationship.addTemplateId(IiParser.fromXml(child));
+          case "urn:hl7-org:sdtc|code" -> asPatientRelationship.setCode(CeParser.fromXml(child));
         }
       }
     }
     
-    return Person.isEmpty(person) ? null : person;
+    return AsPatientRelationship.isEmpty(asPatientRelationship) ? null : asPatientRelationship;
   }
           
 }

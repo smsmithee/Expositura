@@ -65,10 +65,10 @@ public class ClinicalDocumentParser {
           case "urn:hl7-org:v3|typeId" -> ccd.setTypeId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|templateId" -> ccd.addTemplateId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|id" -> ccd.setId(IiParser.fromXml(child));
-          case "urn:hl7-org:sdtc|category" -> ccd.addSdtcCategory(CdParser.fromXml(child));
+          case "urn:hl7-org:sdtc|category" -> ccd.addCategory(CdParser.fromXml(child));
           case "urn:hl7-org:v3|code" -> ccd.setCode(CeParser.fromXml(child));
           case "urn:hl7-org:v3|title" -> ccd.setTitle(StParser.fromXml(child));
-          case "urn:hl7-org:sdtc|statusCode" -> ccd.setSdtcStatusCode(CsParser.fromXml(child));
+          case "urn:hl7-org:sdtc|statusCode" -> ccd.setStatusCode(CsParser.fromXml(child));
           case "urn:hl7-org:v3|effectiveTime" -> ccd.setEffectiveTime(TsParser.fromXml(child));
           case "urn:hl7-org:v3|confidentialityCode" -> ccd.setConfidentialityCode(CeParser.fromXml(child));
           case "urn:hl7-org:v3|languageCode" -> ccd.setLanguageCode(CsParser.fromXml(child));
@@ -79,6 +79,8 @@ public class ClinicalDocumentParser {
           case "urn:hl7-org:v3|author" -> ccd.addAuthor(AuthorParser.fromXml(child));
           case "urn:hl7-org:v3|dataEnterer" -> ccd.setDataEnterer(DataEntererParser.fromXml(child));
           case "urn:hl7-org:v3|informant" -> ccd.addInformant(InformantParser.fromXml(child));
+          case "urn:hl7-org:v3|custodian" -> ccd.setCustodian(CustodianParser.fromXml(child));
+          case "urn:hl7-org:v3|informationRecipient" -> ccd.addInformationRecipient(InformationRecipientParser.fromXml(child));
         }
       }
     }
