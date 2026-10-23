@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/EntryRelationship",
+  "title": "Entry Relationship Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "typeCode": {
+      "type": "string"
+    },
+    "inversionInd": {
+      "type": "boolean"
+    },
+    "contextConductionInd": {
+      "type": "boolean"
+    },
+    "negationInd": {
+      "type": "boolean"
+    },
+    "sequenceNumber": {
+      "$ref": "INTT.json"
+    },
+    "seperatableInd": {
+      "$ref": "BL.json"
+    },
+    "act": {
+      "$ref": "Act.json"
+    },
+    "encounter": {
+      "$ref": "Encounter.json"
+    },
+    "observation": {
+      "$ref": "Observation.json"
+    },
+    "observationMedia": {
+      "$ref": "ObservationMedia.json"
+    },
+    "organizer": {
+      "$ref": "Organizer.json"
+    },
+    "procedure": {
+      "$ref": "Procedure.json"
+    },
+    "regionOfInterest": {
+      "$ref": "RegionOfInterest.json"
+    },
+    "substanceAdministration": {
+      "$ref": "SubstanceAdministration.json"
+    },
+    "supply": {
+      "$ref": "Supply.json"
+    }
+  }
+}

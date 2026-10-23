@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/IVL-INT",
+  "title": "Interval (IVL_INT) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "value": {
+      "type": "integer"
+    },
+    "operator": {
+      "type": "string"
+    },
+    "low": {
+      "$ref": "IVXB_INT.json"
+    },
+    "center": {
+      "$ref": "INTT.json"
+    },
+    "width": {
+      "$ref": "INTT.json"
+    },
+    "high": {
+      "$ref": "IVXB_INT.json"
+    }
+  }
+}

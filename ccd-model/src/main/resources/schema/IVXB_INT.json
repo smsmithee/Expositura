@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/IVXB-INT",
+  "title": "Interval Boundary Integer Number (IVXB_INT) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "value": {
+      "type": "integer"
+    },
+    "inclusive": {
+      "type": "boolean"
+    }
+  }
+}

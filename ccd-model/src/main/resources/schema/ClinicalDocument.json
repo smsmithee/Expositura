@@ -135,6 +135,12 @@
     },
     "componentOf": {
       "$ref": "ComponentOf.json"
+    },
+    "component": {
+      "type": "array",
+      "items": {
+        "$ref": "Component.json"
+      }
     }
   }
 }

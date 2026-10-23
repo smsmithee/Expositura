@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/StructuredBody",
+  "title": "Structured Body Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "moodCode": {
+      "type": "string"
+    },
+    "confidentialityCode": {
+      "$ref": "CE.json"
+    },
+    "languageCode": {
+      "$ref": "CS.json"
+    },
+    "structuredBodyComponent": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nullFlavor": {
+            "type": "string"
+          },
+          "realmCode": {
+            "type": "array",
+            "items": {
+              "$ref": "CS.json"
+            }
+          },
+          "typeId": {
+            "$ref": "II.json"
+          },
+          "templateId": {
+            "type": "array",
+            "items": {
+              "$ref": "II.json"
+            }
+          },
+          "typeCode": {
+            "type": "string"
+          },
+          "contextConductionInd": {
+            "type": "boolean"
+          },
+          "section": {
+            "$ref": "Section.json"
+          }
+        }
+      }
+    }
+  }
+}

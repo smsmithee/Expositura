@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/SXPR_TS",
+  "$id": "https://expositura.health/2020-12/schema/SXPR-TS",
   "title": "Component Part of GTS (SXPR_TS) Datatype",
   "type": "object",
   "properties": {

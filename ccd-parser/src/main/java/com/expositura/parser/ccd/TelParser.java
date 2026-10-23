@@ -98,7 +98,7 @@ public class TelParser {
             
             // First look for SXPR_TS type which MUST have 'comp' child element(s)
             if (!comp.isEmpty()) {
-              SxprTsParser.fromXml(child);
+              tel.addUseablePeriodAsSxprTs(SxprTsParser.fromXml(child));
             }
             // Next look for event or offset as either shows it's a EIVL_TS
             else if (event != null || offset != null) {

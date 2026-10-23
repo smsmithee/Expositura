@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Act",
+  "title": "Act Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "moodCode": {
+      "type": "string"
+    },
+    "negationInd": {
+      "type": "boolean"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "code": {
+      "$ref": "CD.json"
+    },
+    "text": {
+      "$ref": "ED.json"
+    },
+    "statusCode": {
+      "$ref": "CS.json"
+    },
+    "effectiveTime": {
+      "$ref": "IVL_TS.json"
+    },
+    "priorityCode": {
+      "$ref": "CE.json"
+    },
+    "languageCode": {
+      "$ref": "CS.json"
+    },
+    "subject": {
+      "$ref": "Subject.json"
+    },
+    "specimen": {
+      "type": "array",
+      "items": {
+        "$ref": "Specimen.json"
+      }
+    },
+    "performer": {
+      "type": "array",
+      "items": {
+        "$ref": "Performer2.json"
+      }
+    },
+    "author": {
+      "type": "array",
+      "items": {
+        "$ref": "Author.json"
+      }
+    },
+    "informant": {
+      "type": "array",
+      "items": {
+        "$ref": "Informant.json"
+      }
+    },
+    "participant": {
+      "type": "array",
+      "items": {
+        "$ref": "Participant2.json"
+      }
+    },
+    "entryRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "EntryRelationship.json"
+      }
+    },
+    "reference": {
+      "type": "array",
+      "items": {
+        "$ref": "Reference.json"
+      }
+    },
+    "precondition": {
+      "type": "array",
+      "items": {
+        "$ref": "Precondition.json"
+      }
+    },
+    "precondition2": {
+      "type": "array",
+      "items": {
+        "$ref": "Precondition2.json"
+      }
+    },
+    "inFulfillmentOf1": {
+      "type": "array",
+      "items": {
+        "$ref": "InFulfillmentOf1.json"
+      }
+    }
+  }
+}
+

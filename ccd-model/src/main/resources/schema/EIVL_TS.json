@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/EIVL_TS",
+  "$id": "https://expositura.health/2020-12/schema/EIVL-TS",
   "title": "Event Related Periodic Interval (EIVL_TS) Datatype",
   "type": "object",
   "properties": {

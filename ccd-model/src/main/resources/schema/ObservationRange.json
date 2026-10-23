@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/ObservationRange",
+  "title": "Observation Range Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "moodCode": {
+      "type": "string"
+    },
+    "code": {
+      "$ref": "CD.json"
+    },
+    "text": {
+      "$ref": "ED.json"
+    },
+    "valueType": {
+      "type": "string"
+    },
+    "valueIvlInt": {
+      "$ref": "IVL_INT.json"
+    },
+    "valueIvlPq": {
+      "$ref": "IVL_PQ.json"
+    },
+    "valueIvlTs": {
+      "$ref": "IVL_TS.json"
+    },
+    "valueCd": {
+      "$ref": "CD.json"
+    },
+    "valueAd": {
+      "$ref": "AD.json"
+    },
+    "valueBl": {
+      "$ref": "BL.json"
+    },
+    "valueCe": {
+      "$ref": "CE.json"
+    },
+    "valueCo": {
+      "$ref": "CO.json"
+    },
+    "valueCs": {
+      "$ref": "CS.json"
+    },
+    "valueCv": {
+      "$ref": "CV.json"
+    },
+    "valueEd": {
+      "$ref": "ED.json"
+    },
+    "valueEn": {
+      "$ref": "EN.json"
+    },
+    "valueIi": {
+      "$ref": "II.json"
+    },
+    "valueInt": {
+      "$ref": "INTT.json"
+    },
+    "valueIntPos": {
+      "$ref": "INT_POS.json"
+    },
+    "valueMo": {
+      "$ref": "MO.json"
+    },
+    "valueOn": {
+      "$ref": "ON.json"
+    },
+    "valuePn": {
+      "$ref": "PN.json"
+    },
+    "valuePq": {
+      "$ref": "PQ.json"
+    },
+    "valueReal": {
+      "$ref": "REAL.json"
+    },
+    "valueSc": {
+      "$ref": "SC.json"
+    },
+    "valueSt": {
+      "$ref": "ST.json"
+    },
+    "valueTel": {
+      "$ref": "TEL.json"
+    },
+    "valueTn": {
+      "$ref": "TN.json"
+    },
+    "valueTs": {
+      "$ref": "TS.json"
+    },
+    "valuePivlTs": {
+      "$ref": "PIVL_TS.json"
+    },
+    "valueEivlTs": {
+      "$ref": "EIVL_TS.json"
+    },
+    "valueSxprTs": {
+      "$ref": "SXPR_TS.json"
+    },
+    "valueRtoPqPq": {
+      "$ref": "RTO_PQ_PQ.json"
+    },
+    "interpretationCode": {
+      "$ref": "CE.json"
+    },
+    "precondition1": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nullFlavor": {
+            "type": "string"
+          },
+          "realmCode": {
+            "type": "array",
+            "items": {
+              "$ref": "CS.json"
+            }
+          },
+          "typeId": {
+            "$ref": "II.json"
+          },
+          "templateId": {
+            "type": "array",
+            "items": {
+              "$ref": "II.json"
+            }
+          },
+          "typeCode": {
+            "type": "string"
+          },
+          "conjunctionCode": {
+            "$ref": "CS.json"
+          },
+          "criterion1": {
+            "$ref": "Criterion.json"
+          }
+        }
+      }
+    },
+    "inFulfillmentOf": {
+      "type": "array",
+      "items": {
+        "$ref": "InFulfillmentOf1.json"
+      }
+    }
+  }
+}
+

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/INT_POS",
+  "$id": "https://expositura.health/2020-12/schema/INT-POS",
   "title": "Positive Integer Numbers (INT_POS) Datatype",
   "type": "object",
   "properties": {

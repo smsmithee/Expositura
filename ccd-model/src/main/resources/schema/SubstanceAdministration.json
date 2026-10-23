@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/SubstanceAdministration",
+  "title": "Substance Administration Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "moodCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "code": {
+      "$ref": "CD.json"
+    },
+    "negationInd": {
+      "type": "boolean"
+    },
+    "text": {
+      "$ref": "ED.json"
+    },
+    "statusCode": {
+      "$ref": "CS.json"
+    },
+    "effectiveTimeAsSxcmTs": {
+      "type": "array",
+      "items": {
+        "$ref": "SXCM_TS.json"
+      }
+    },
+    "effectiveTimeAsIvlTs": {
+      "type": "array",
+      "items": {
+        "$ref": "IVL_TS.json"
+      }
+    },
+    "effectiveTimeAsEivlTs": {
+      "type": "array",
+      "items": {
+        "$ref": "EIVL_TS.json"
+      }
+    },
+    "effectiveTimeAsPivlTs": {
+      "type": "array",
+      "items": {
+        "$ref": "PIVL_TS.json"
+      }
+    },
+    "effectiveTimeAsSxprTs": {
+      "type": "array",
+      "items": {
+        "$ref": "SXPR_TS.json"
+      }
+    },
+    "priorityCode": {
+      "$ref": "CE.json"
+    },
+    "repeatNumber": {
+      "$ref": "IVL_INT.json"
+    },
+    "routeCode": {
+      "$ref": "CE.json"
+    },
+    "approachSiteCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CD.json"
+      }
+    },
+    "doseQuantity": {
+      "$ref": "IVL_PQ.json"
+    },
+    "rateQuantity": {
+      "$ref": "IVL_PQ.json"
+    },
+    "maxDoseQuantity": {
+      "$ref": "RTO_PQ_PQ.json"
+    },
+    "administrationUnitCode": {
+      "$ref": "CE.json"
+    },
+    "consumable": {
+      "type": "object",
+      "properties": {
+        "nullFlavor": {
+          "type": "string"
+        },
+        "realmCode": {
+          "type": "array",
+          "items": {
+            "$ref": "CS.json"
+          }
+        },
+        "typeId": {
+          "$ref": "II.json"
+        },
+        "templateId": {
+          "type": "array",
+          "items": {
+            "$ref": "II.json"
+          }
+        },
+        "typeCode": {
+          "type": "string"
+        },
+        "manufacturedProduct": {
+          "$ref": "ManufacturedProduct.json"
+        }
+      }
+    },
+    "subject": {
+      "$ref": "Subject.json"
+    },
+    "specimen": {
+      "type": "array",
+      "items": {
+        "$ref": "Specimen.json"
+      }
+    },
+    "performer": {
+      "type": "array",
+      "items": {
+        "$ref": "Performer2.json"
+      }
+    },
+    "author": {
+      "type": "array",
+      "items": {
+        "$ref": "Author.json"
+      }
+    },
+    "informant": {
+      "type": "array",
+      "items": {
+        "$ref": "Informant.json"
+      }
+    },
+    "participant": {
+      "type": "array",
+      "items": {
+        "$ref": "Participant2.json"
+      }
+    },
+    "entryRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "EntryRelationship.json"
+      }
+    },
+    "reference": {
+      "type": "array",
+      "items": {
+        "$ref": "Reference.json"
+      }
+    },
+    "precondition": {
+      "type": "array",
+      "items": {
+        "$ref": "Precondition.json"
+      }
+    },
+    "precondition2": {
+      "type": "array",
+      "items": {
+        "$ref": "Precondition2.json"
+      }
+    },
+    "inFulfillmentOf1": {
+      "type": "array",
+      "items": {
+        "$ref": "InFulfillmentOf1.json"
+      }
+    }
+  }
+}
+
