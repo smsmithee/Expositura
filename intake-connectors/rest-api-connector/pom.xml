@@ -107,11 +107,7 @@
       <plugin>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
-<<<<<<< Updated upstream
-        <version>7.18.0</version>
-=======
         <version>7.26.0</version>
->>>>>>> Stashed changes
         <executions>
           <execution>
             <goals>
