@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/InfulfillmentOf1",
+  "title": "InfulfillmentOf1 Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "typeCode": {
+      "type": "string"
+    },
+    "inversionInd": {
+      "type": "boolean"
+    },
+    "negationInd": {
+      "type": "boolean"
+    },
+    "actReference": {
+      "type": "object",
+      "properties": {
+        "nullFlavor": {
+          "type": "string"
+        },
+        "realmCode": {
+          "type": "array",
+          "items": {
+            "$ref": "CS.json"
+          }
+        },
+        "typeId": {
+          "$ref": "II.json"
+        },
+        "templateId": {
+          "type": "array",
+          "items": {
+            "$ref": "II.json"
+          }
+        },
+        "classCode": {
+          "type": "string"
+        },
+        "moodCode": {
+          "type": "string"
+        },
+        "determinerCode": {
+          "type": "string"
+        },
+        "id": {
+          "type": "array",
+          "items": {
+            "$ref": "II.json"
+          }
+        }
+      }
+    }
+  }
+}

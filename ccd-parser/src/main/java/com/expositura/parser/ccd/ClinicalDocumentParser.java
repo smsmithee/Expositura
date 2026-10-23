@@ -89,6 +89,7 @@ public class ClinicalDocumentParser {
           case "urn:hl7-org:v3|relatedDocument" -> ccd.addRelatedDocument(RelatedDocumentParser.fromXml(child));
           case "urn:hl7-org:v3|authorization" -> ccd.addAuthorization(AuthorizationParser.fromXml(child));
           case "urn:hl7-org:v3|componentOf" -> ccd.setComponentOf(ComponentOfParser.fromXml(child));
+          case "urn:hl7-org:v3|component" -> ccd.addComponent(ComponentParser.fromXml(child));
         }
       }
     }

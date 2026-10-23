@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/SubjectPerson",
+  "title": "Subject Person Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "determinerCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "name": {
+      "type": "array",
+      "items": {
+        "$ref": "PN.json"
+      }
+    },
+    "desc": {
+      "$ref": "ED.json"
+    },
+    "administrativeGenderCode": {
+      "$ref": "CE.json"
+    },
+    "birthTime": {
+      "$ref": "TS.json"
+    },
+    "deceasedInd": {
+      "$ref": "BL.json"
+    },
+    "deceasedTime": {
+      "$ref": "TS.json"
+    },
+    "multipleBirthInd": {
+      "$ref": "BL.json"
+    },
+    "multipleBirthOrderNumber": {
+      "$ref": "INT_POS.json"
+    }
+  }
+}

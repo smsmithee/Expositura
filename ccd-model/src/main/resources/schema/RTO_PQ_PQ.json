@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/RTO-PQ-PQ",
+  "title": "Ratio (RTO_PQ_PQ) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "numerator": {
+      "$ref": "PQ.json"
+    },
+    "denominator": {
+      "$ref": "PQ.json"
+    }
+  }
+}

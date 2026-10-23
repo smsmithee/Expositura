@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/IVL_TS",
+  "$id": "https://expositura.health/2020-12/schema/IVL-TS",
   "title": "Interval (IVL_TS) Datatype",
   "type": "object",
   "properties": {

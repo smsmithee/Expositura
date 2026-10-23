@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/IVXB_TS",
+  "$id": "https://expositura.health/2020-12/schema/IVXB-TS",
   "title": "Interval Boundary Point In Time (IVXB_TS) Datatype",
   "type": "object",
   "properties": {

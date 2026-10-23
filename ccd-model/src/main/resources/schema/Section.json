@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Section",
+  "title": "Section Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "xsId": {
+      "type": "string"
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "moodCode": {
+      "type": "string"
+    },
+    "id": {
+      "$ref": "II.json"
+    },
+    "code": {
+      "$ref": "CE.json"
+    },
+    "title": {
+      "$ref": "ST.json"
+    },
+    "text": {
+      "existingJavaType" : "java.util.Map<String,Object>",
+      "type" : "object"
+    },
+    "confidentialityCode": {
+      "$ref": "CE.json"
+    },
+    "languageCode": {
+      "$ref": "CS.json"
+    },
+    "subject": {
+      "$ref": "Subject.json"
+    },
+    "author": {
+      "type": "array",
+      "items": {
+        "$ref": "Author.json"
+      }
+    },
+    "informant": {
+      "type": "array",
+      "items": {
+        "$ref": "Informant.json"
+      }
+    },
+    "entry": {
+      "type": "array",
+      "items": {
+        "$ref": "Entry.json"
+      }
+    },
+    "sectionComponent": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nullFlavor": {
+            "type": "string"
+          },
+          "realmCode": {
+            "type": "array",
+            "items": {
+              "$ref": "CS.json"
+            }
+          },
+          "typeId": {
+            "$ref": "II.json"
+          },
+          "templateId": {
+            "type": "array",
+            "items": {
+              "$ref": "II.json"
+            }
+          },
+          "typeCode": {
+            "type": "string"
+          },
+          "contextConductionInd": {
+            "type": "boolean"
+          },
+          "section": {
+            "$ref": "Section.json"
+          }
+        }
+      }
+    }
+  }
+}

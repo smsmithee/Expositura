@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Criterion",
+  "title": "Criterion Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "moodCode": {
+      "type": "string"
+    },
+    "code": {
+      "$ref": "CD.json"
+    },
+    "text": {
+      "$ref": "ED.json"
+    },
+    "valueType": {
+      "type": "string"
+    },
+    "valueBl": {
+      "$ref": "BL.json"
+    },
+    "valueEd": {
+      "$ref": "ED.json"
+    },
+    "valueSt": {
+      "$ref": "ST.json"
+    },
+    "valueCd": {
+      "$ref": "CD.json"
+    },
+    "valueCv": {
+      "$ref": "CV.json"
+    },
+    "valueCe": {
+      "$ref": "CE.json"
+    },
+    "valueSc": {
+      "$ref": "SC.json"
+    },
+    "valueIi": {
+      "$ref": "II.json"
+    },
+    "valueTel": {
+      "$ref": "TEL.json"
+    },
+    "valueAd": {
+      "$ref": "AD.json"
+    },
+    "valueEn": {
+      "$ref": "EN.json"
+    },
+    "valueInt": {
+      "$ref": "INTT.json"
+    },
+    "valueReal": {
+      "$ref": "REAL.json"
+    },
+    "valuePq": {
+      "$ref": "PQ.json"
+    },
+    "valueMo": {
+      "$ref": "MO.json"
+    },
+    "valueTs": {
+      "$ref": "TS.json"
+    },
+    "valueIvlPq": {
+      "$ref": "IVL_PQ.json"
+    },
+    "valueIvlTs": {
+      "$ref": "IVL_TS.json"
+    },
+    "valuePivlTs": {
+      "$ref": "PIVL_TS.json"
+    },
+    "valueEivlTs": {
+      "$ref": "EIVL_TS.json"
+    },
+    "valueSxprTs": {
+      "$ref": "SXPR_TS.json"
+    }
+  }
+}

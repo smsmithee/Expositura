@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/CO",
+  "title": "Coded Ordinal (CO) Datatype",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "codeSystem": {
+      "type": "string"
+    },
+    "codeSystemName": {
+      "type": "string"
+    },
+    "codeSystemVersion": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "valueSet": {
+      "type": "string"
+    },
+    "valueSetVersion": {
+      "type": "string"
+    },
+    "originalText": {
+      "$ref": "ED.json"
+    }
+  }
+}

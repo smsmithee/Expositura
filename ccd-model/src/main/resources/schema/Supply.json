@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Supply",
+  "title": "Supply Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "classCode": {
+      "type": "string"
+    },
+    "moodCode": {
+      "type": "string"
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "code": {
+      "$ref": "CD.json"
+    },
+    "text": {
+      "$ref": "ED.json"
+    },
+    "statusCode": {
+      "$ref": "CS.json"
+    },
+    "effectiveTimeAsSxcmTs": {
+      "type": "array",
+      "items": {
+        "$ref": "SXCM_TS.json"
+      }
+    },
+    "effectiveTimeAsIvlTs": {
+      "type": "array",
+      "items": {
+        "$ref": "IVL_TS.json"
+      }
+    },
+    "effectiveTimeAsEivlTs": {
+      "type": "array",
+      "items": {
+        "$ref": "EIVL_TS.json"
+      }
+    },
+    "effectiveTimeAsPivlTs": {
+      "type": "array",
+      "items": {
+        "$ref": "PIVL_TS.json"
+      }
+    },
+    "effectiveTimeAsSxprTs": {
+      "type": "array",
+      "items": {
+        "$ref": "SXPR_TS.json"
+      }
+    },
+    "priorityCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CE.json"
+      }
+    },
+    "repeatNumber": {
+      "$ref": "IVL_INT.json"
+    },
+    "independentInd": {
+      "$ref": "BL.json"
+    },
+    "quantity": {
+      "$ref": "PQ.json"
+    },
+    "expectedUseTime": {
+      "$ref": "IVL_TS.json"
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "nullFlavor": {
+          "type": "string"
+        },
+        "realmCode": {
+          "type": "array",
+          "items": {
+            "$ref": "CS.json"
+          }
+        },
+        "typeId": {
+          "$ref": "II.json"
+        },
+        "templateId": {
+          "type": "array",
+          "items": {
+            "$ref": "II.json"
+          }
+        },
+        "typeCode": {
+          "type": "string"
+        },
+        "manufacturedProduct": {
+          "$ref": "ManufacturedProduct.json"
+        }
+      }
+    },
+    "subject": {
+      "$ref": "Subject.json"
+    },
+    "specimen": {
+      "type": "array",
+      "items": {
+        "$ref": "Specimen.json"
+      }
+    },
+    "performer": {
+      "type": "array",
+      "items": {
+        "$ref": "Performer2.json"
+      }
+    },
+    "author": {
+      "type": "array",
+      "items": {
+        "$ref": "Author.json"
+      }
+    },
+    "informant": {
+      "type": "array",
+      "items": {
+        "$ref": "Informant.json"
+      }
+    },
+    "participant": {
+      "type": "array",
+      "items": {
+        "$ref": "Participant2.json"
+      }
+    },
+    "entryRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "EntryRelationship.json"
+      }
+    },
+    "reference": {
+      "type": "array",
+      "items": {
+        "$ref": "Reference.json"
+      }
+    },
+    "precondition": {
+      "type": "array",
+      "items": {
+        "$ref": "Precondition.json"
+      }
+    },
+    "inFulfillmentOf1": {
+      "type": "array",
+      "items": {
+        "$ref": "InFulfillmentOf1.json"
+      }
+    }
+  }
+}
+

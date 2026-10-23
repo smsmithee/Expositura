@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://expositura.health/2020-12/schema/Precondition2",
+  "title": "Precondition2 Class",
+  "type": "object",
+  "properties": {
+    "nullFlavor": {
+      "type": "string"
+    },
+    "realmCode": {
+      "type": "array",
+      "items": {
+        "$ref": "CS.json"
+      }
+    },
+    "typeId": {
+      "$ref": "II.json"
+    },
+    "templateId": {
+      "type": "array",
+      "items": {
+        "$ref": "II.json"
+      }
+    },
+    "typeCode": {
+      "type": "string"
+    },
+    "negationInd": {
+      "type": "boolean"
+    },
+    "conjuntionCode": {
+      "$ref": "CS.json"
+    },
+    "allTrue": {
+      "$ref": "PreconditionBase.json"
+    },
+    "allFalse": {
+      "$ref": "PreconditionBase.json"
+    },
+    "atLeastOneTrue": {
+      "$ref": "PreconditionBase.json"
+    },
+    "atLeastOneFalse": {
+      "$ref": "PreconditionBase.json"
+    },
+    "onlyOneTrue": {
+      "$ref": "PreconditionBase.json"
+    },
+    "onlyOneFalse": {
+      "$ref": "PreconditionBase.json"
+    },
+    "criterion": {
+      "$ref": "Criterion.json"
+    }
+  }
+}

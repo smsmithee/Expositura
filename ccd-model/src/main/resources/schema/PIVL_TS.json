@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://expositura.health/2020-12/schema/PIVL_TS",
+  "$id": "https://expositura.health/2020-12/schema/PIVL-TS",
   "title": "Periodic Interval of Time (PIVL_TS) Datatype",
   "type": "object",
   "properties": {

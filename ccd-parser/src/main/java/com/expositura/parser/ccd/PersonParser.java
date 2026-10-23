@@ -66,8 +66,8 @@ public class PersonParser {
           case "urn:hl7-org:v3|typeId" -> person.setTypeId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|templateId" -> person.addTemplateId(IiParser.fromXml(child));
           case "urn:hl7-org:v3|name" -> person.addName(PnParser.fromXml(child));
-          case "urn:hl7-org:sdtc|sdtcDesc" -> person.setDesc(EdParser.fromXml(child));
-          case "urn:hl7-org:sdtc|sdtcAsPatientRelationship" -> person.addAsPatientRelationship(AsPatientRelationshipParser.fromXml(child));
+          case "urn:hl7-org:sdtc|desc" -> person.setDesc(EdParser.fromXml(child));
+          case "urn:hl7-org:sdtc|asPatientRelationship" -> person.addAsPatientRelationship(AsPatientRelationshipParser.fromXml(child));
         }
       }
     }

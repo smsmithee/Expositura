@@ -23,6 +23,13 @@ import com.expositura.model.ccd.Ts;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /**
  * Holds various parsing utility methods.
@@ -115,18 +122,20 @@ public class ParserUtils {
   }
 
   /**
-   * Parse a CCD CE datatype into a single string. Requires there to at least be a code value. If that's all that is
-   * available then it returns the code. If codeSystem is present it will return code@codeSystem. if codeSystem is not
-   * present but codeSystemName is then it returns code@codeSystemName.
+   * Parse a CCD CE List/Array datatype into a single string. Uses the first CE only, ignoring the rest. Requires there
+   * to at least be a code value. If that's all that is available then it returns the code. If codeSystem is present it
+   * will return code@codeSystem. if codeSystem is not present but codeSystemName is then it returns
+   * code@codeSystemName.
    *
-   * @param ce The CE datatype.
-   * @return A String representation of the value of the CE.
+   * @param ceList The list of CE datatype.
+   * @return A String representation of the value of the first CE in the list if present.
    */
-  public static String parseCeToString(final Ce ce) {
-    if (ce == null || (ce.getCode() == null)) {
+  public static String parseCeListToString(final List<Ce> ceList) {
+    if (ceList == null) {
       return null;
     }
 
+    final Ce ce = ceList.getFirst();
     if (ce.getCodeSystem() != null) {
       return ce.getCode() + "@" + ce.getCodeSystem();
     } else if (ce.getCodeSystemName() != null) {
@@ -163,10 +172,10 @@ public class ParserUtils {
           }
           sb.append(p.getXmlText());
         }
-      });   
+      });
     }
-    
-    if (pn.getGiven()!= null) {
+
+    if (pn.getGiven() != null) {
       pn.getGiven().forEach(g -> {
         if (g.getXmlText() != null) {
           if (sb.length() > 0) {
@@ -174,10 +183,10 @@ public class ParserUtils {
           }
           sb.append(g.getXmlText());
         }
-      });   
+      });
     }
-    
-    if (pn.getFamily()!= null) {
+
+    if (pn.getFamily() != null) {
       pn.getFamily().forEach(f -> {
         if (f.getXmlText() != null) {
           if (sb.length() > 0) {
@@ -185,10 +194,10 @@ public class ParserUtils {
           }
           sb.append(f.getXmlText());
         }
-      });   
+      });
     }
-    
-    if (pn.getSuffix()!= null) {
+
+    if (pn.getSuffix() != null) {
       pn.getSuffix().forEach(s -> {
         if (s.getXmlText() != null) {
           if (sb.length() > 0) {
@@ -196,9 +205,9 @@ public class ParserUtils {
           }
           sb.append(s.getXmlText());
         }
-      });   
+      });
     }
-    
+
     return sb.toString();
   }
 
@@ -206,7 +215,7 @@ public class ParserUtils {
     if (ii == null) {
       return null;
     }
-    
+
     if (ii.getExtension() != null && ii.getRoot() != null) {
       return ii.getExtension() + "@" + ii.getRoot();
     } else if (ii.getRoot() != null) {
@@ -222,5 +231,55 @@ public class ParserUtils {
     }
 
     return cs.getCode();
+  }
+
+  /**
+   * Converts a DOM Node into a map
+   * @param node the DOM node
+   * @return a map with all attributes and children, grandchildren, etc.
+   */
+  public static Map<String, Object> nodeToMap(final Node node) {
+    final Map<String, Object> map = new HashMap<>();
+
+    // Add attributes
+    final NamedNodeMap attributes = node.getAttributes();
+    if (attributes != null) {
+      for (int i = 0; i < attributes.getLength(); i++) {
+        final Node attr = attributes.item(i);
+        map.put("@" + attr.getNodeName(), attr.getNodeValue());
+      }
+    }
+
+    // Add child nodes
+    final NodeList children = node.getChildNodes();
+    for (int i = 0; i < children.getLength(); i++) {
+      final Node child = children.item(i);
+
+      if (child.getNodeType() == Node.TEXT_NODE) {
+        final String text = child.getTextContent().trim();
+        if (!text.isEmpty()) {
+          map.put("_text", text);
+        }
+      } else if (child.getNodeType() == Node.ELEMENT_NODE) {
+        final String name = child.getNodeName();
+
+        // Handle multiple children with same name
+        if (map.containsKey(name)) {
+          final Object existing = map.get(name);
+          if (existing instanceof List) {
+            ((List<Object>) existing).add(nodeToMap(child));
+          } else {
+            List<Object> list = new ArrayList<>();
+            list.add(existing);
+            list.add(nodeToMap(child));
+            map.put(name, list);
+          }
+        } else {
+          map.put(name, nodeToMap(child));
+        }
+      }
+    }
+
+    return map;
   }
 }

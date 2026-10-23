@@ -102,7 +102,7 @@ public class AdParser {
             // This element may be one of four different datatypes, determine which one
             final NamedNodeMap childAttributes = child.getAttributes();
             
-            // These are the possible child nodes for the five different datatypes
+            // These are the possible child nodes for the different datatypes
             Node event = null;
             Node offset = null;
             Node phase = null;
@@ -125,7 +125,7 @@ public class AdParser {
             
             // First look for SXPR_TS type which MUST have 'comp' child element(s)
             if (!comp.isEmpty()) {
-              SxprTsParser.fromXml(child);
+              ad.addUseablePeriodAsSxprTs(SxprTsParser.fromXml(child));
             }
             // Next look for event or offset as either shows it's a EIVL_TS
             else if (event != null || offset != null) {
